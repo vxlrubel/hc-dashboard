@@ -19,6 +19,7 @@ import {
 import ModeToggle from '@/components/ModeToggle.vue'
 import NotificationView from '@/components/header/NotificationView.vue'
 import { Button } from '@/components/ui/button'
+import NavigationMenu from './components/header/NavigationMenu.vue'
 </script>
 
 <template>
@@ -75,6 +76,9 @@ import { Button } from '@/components/ui/button'
           <Button variant="outline" class="-ml-1 h-8 w-8 rounded-full cursor-pointer">
             <SidebarTrigger class="cursor-pointer" />
           </Button>
+          <div class="flex-1 scale-0 lg:scale-100">
+            <NavigationMenu />
+          </div>
         </div>
         <div class="px-4 flex items-center gap-2">
           <NotificationView />
