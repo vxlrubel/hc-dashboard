@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/sidebar'
 import ModeToggle from '@/components/ModeToggle.vue'
 import NotificationView from '@/components/header/NotificationView.vue'
+import { Button } from '@/components/ui/button'
 </script>
 
 <template>
@@ -42,7 +43,7 @@ import NotificationView from '@/components/header/NotificationView.vue'
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Platform</SidebarGroupLabel>
+          <SidebarGroupLabel>General</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
@@ -71,9 +72,9 @@ import NotificationView from '@/components/header/NotificationView.vue'
         class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 bg-sidebar"
       >
         <div class="flex flex-1 items-center gap-2 px-4">
-          <SidebarTrigger
-            class="-ml-1 inline-flex items-center justify-center outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 px-4 py-2 has-[>svg]:px-3 h-8 w-8 rounded-full cursor-pointer"
-          />
+          <Button variant="outline" class="-ml-1 h-8 w-8 rounded-full cursor-pointer">
+            <SidebarTrigger class="cursor-pointer" />
+          </Button>
         </div>
         <div class="px-4 flex items-center gap-2">
           <NotificationView />
