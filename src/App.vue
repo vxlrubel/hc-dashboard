@@ -6,11 +6,14 @@ import NotificationView from '@/components/header/NotificationView.vue'
 import { Button } from '@/components/ui/button'
 import NavigationMenu from '@/components/header/NavigationMenu.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
+import { TooltipProvider } from '@/components/ui/tooltip'
 </script>
 
 <template>
   <SidebarProvider>
-    <AppSidebar />
+    <TooltipProvider>
+      <AppSidebar />
+    </TooltipProvider>
     <SidebarInset>
       <header
         class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 bg-sidebar"

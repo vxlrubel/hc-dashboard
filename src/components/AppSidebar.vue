@@ -12,13 +12,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
 } from '@/components/ui/sidebar'
 
-import { GalleryVerticalEnd } from '@lucide/vue'
+import { GalleryVerticalEnd, UserCog, ChevronRight, Users } from '@lucide/vue'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 </script>
 
 <template>
-  <Sidebar>
+  <Sidebar collapsible="icon">
     <SidebarHeader>
       <SidebarMenu>
         <SidebarMenuItem>
@@ -43,9 +47,10 @@ import { GalleryVerticalEnd } from '@lucide/vue'
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton as-child>
-                <RouterLink to="/" class="block px-4 py-1.5 hover:bg-gray-700"
-                  >Dashboard</RouterLink
-                >
+                <RouterLink to="/">
+                  <UserCog />
+                  <span>Dashboard </span>
+                </RouterLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
@@ -55,8 +60,93 @@ import { GalleryVerticalEnd } from '@lucide/vue'
                 >
               </SidebarMenuButton>
             </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Tooltip>
+                <TooltipTrigger as-child>
+                  <SidebarMenuButton as-child>
+                    <RouterLink to="/about">
+                      <UserCog />
+                      <span>About Us</span>
+                    </RouterLink>
+                  </SidebarMenuButton>
+                </TooltipTrigger>
+
+                <TooltipContent side="right"> About Us </TooltipContent>
+              </Tooltip>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
+      </SidebarGroup>
+
+      <SidebarGroup>
+        <SidebarGroupLabel>Settings</SidebarGroupLabel>
+
+        <SidebarMenuItem>
+          <Collapsible>
+            <CollapsibleTrigger as-child>
+              <SidebarMenuButton class="group">
+                <Users />
+                <span>Users</span>
+                <ChevronRight
+                  class="ml-auto transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-90"
+                />
+              </SidebarMenuButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>All Users</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>Add User</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>User Roles</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </Collapsible>
+          <Collapsible>
+            <CollapsibleTrigger as-child>
+              <SidebarMenuButton class="group">
+                <Users />
+                <span>Users</span>
+                <ChevronRight
+                  class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                />
+              </SidebarMenuButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>All Users</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>Add User</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+
+                <SidebarMenuSubItem>
+                  <SidebarMenuButton>
+                    <span>User Roles</span>
+                  </SidebarMenuButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </Collapsible>
+        </SidebarMenuItem>
       </SidebarGroup>
     </SidebarContent>
     <SidebarFooter />
