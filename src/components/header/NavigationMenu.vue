@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from '@lucide/vue'
+import { RouterLink } from 'vue-router'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,44 +10,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { default as ListItem } from '@/components/ui/navigation-menu/NavigationMenuItem.vue'
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Alert Dialog',
-    href: '/docs/primitives/alert-dialog',
-    description:
-      'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    href: '/docs/primitives/hover-card',
-    description: 'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    href: '/docs/primitives/tabs',
-    description:
-      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-]
 </script>
 
 <template>
@@ -71,22 +34,22 @@ const components: { title: string; href: string; description: string }[] = [
             </li>
             <li>
               <NavigationMenuLink as-child>
-                <a href="#">
+                <RouterLink to="/components">
                   <div class="font-medium">Components</div>
                   <div class="text-muted-foreground">Browse all components in the library.</div>
-                </a>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">
+                <RouterLink to="/docs">
                   <div class="font-medium">Documentation</div>
                   <div class="text-muted-foreground">Learn how to use the library.</div>
-                </a>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">
+                <RouterLink to="/blog">
                   <div class="font-medium">Blog</div>
                   <div class="text-muted-foreground">Read our latest blog posts.</div>
-                </a>
+                </RouterLink>
               </NavigationMenuLink>
             </li>
           </ul>
@@ -166,7 +129,7 @@ const components: { title: string; href: string; description: string }[] = [
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
-          <a href="/docs">Docs</a>
+          <RouterLink to="/docs">Docs</RouterLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
