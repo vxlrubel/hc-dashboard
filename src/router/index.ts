@@ -30,6 +30,26 @@ const router = createRouter({
       component: () => import('@/views/employees/DetailView.vue'),
     },
     {
+      path: '/dashboard/carers',
+      name: 'carers',
+      component: () => import('@/views/carers/ListView.vue'),
+    },
+    {
+      path: '/dashboard/carer/add',
+      name: 'carer-add',
+      component: () => import('@/views/carers/AddView.vue'),
+    },
+    {
+      path: '/dashboard/carer/edit/:id',
+      name: 'carer-edit',
+      component: () => import('@/views/carers/EditView.vue'),
+    },
+    {
+      path: '/dashboard/carer/show/:id',
+      name: 'carer-show',
+      component: () => import('@/views/carers/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
