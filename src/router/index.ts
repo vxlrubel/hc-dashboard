@@ -50,6 +50,26 @@ const router = createRouter({
       component: () => import('@/views/carers/DetailView.vue'),
     },
     {
+      path: '/dashboard/funders',
+      name: 'funders',
+      component: () => import('@/views/funders/ListView.vue'),
+    },
+    {
+      path: '/dashboard/funder/add',
+      name: 'funder-add',
+      component: () => import('@/views/funders/AddView.vue'),
+    },
+    {
+      path: '/dashboard/funder/edit/:id',
+      name: 'funder-edit',
+      component: () => import('@/views/funders/EditView.vue'),
+    },
+    {
+      path: '/dashboard/funder/show/:id',
+      name: 'funder-show',
+      component: () => import('@/views/funders/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
