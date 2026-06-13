@@ -69,30 +69,26 @@ const components: { title: string; href: string; description: string }[] = [
                 </a>
               </NavigationMenuLink>
             </li>
-            <ListItem to="/docs" title="Introduction">
-              Re-usable components built using Radix UI and Tailwind CSS.
-            </ListItem>
-            <ListItem to="/docs/installation" title="Installation">
-              How to install dependencies and structure your app.
-            </ListItem>
-            <ListItem to="/docs/primitives/typography" title="Typography">
-              Styles for headings, paragraphs, lists...etc
-            </ListItem>
-          </ul>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-            <ListItem
-              v-for="component in components"
-              :key="component.title"
-              :title="component.title"
-              :to="component.href"
-            >
-              {{ component.description }}
-            </ListItem>
+            <li>
+              <NavigationMenuLink as-child>
+                <a href="#">
+                  <div class="font-medium">Components</div>
+                  <div class="text-muted-foreground">Browse all components in the library.</div>
+                </a>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <a href="#">
+                  <div class="font-medium">Documentation</div>
+                  <div class="text-muted-foreground">Learn how to use the library.</div>
+                </a>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <a href="#">
+                  <div class="font-medium">Blog</div>
+                  <div class="text-muted-foreground">Read our latest blog posts.</div>
+                </a>
+              </NavigationMenuLink>
+            </li>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
