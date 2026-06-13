@@ -110,6 +110,26 @@ const router = createRouter({
       component: () => import('@/views/activities/DetailView.vue'),
     },
     {
+      path: '/dashboard/rotas',
+      name: 'rotas',
+      component: () => import('@/views/rotas/ListView.vue'),
+    },
+    {
+      path: '/dashboard/rota/add',
+      name: 'rota-add',
+      component: () => import('@/views/rotas/AddView.vue'),
+    },
+    {
+      path: '/dashboard/rota/edit/:id',
+      name: 'rota-edit',
+      component: () => import('@/views/rotas/EditView.vue'),
+    },
+    {
+      path: '/dashboard/rota/show/:id',
+      name: 'rota-show',
+      component: () => import('@/views/rotas/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
