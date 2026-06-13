@@ -90,6 +90,26 @@ const router = createRouter({
       component: () => import('@/views/forms/DetailView.vue'),
     },
     {
+      path: '/dashboard/activities',
+      name: 'activities',
+      component: () => import('@/views/activities/ListView.vue'),
+    },
+    {
+      path: '/dashboard/activity/add',
+      name: 'activity-add',
+      component: () => import('@/views/activities/AddView.vue'),
+    },
+    {
+      path: '/dashboard/activity/edit/:id',
+      name: 'activity-edit',
+      component: () => import('@/views/activities/EditView.vue'),
+    },
+    {
+      path: '/dashboard/activity/show/:id',
+      name: 'activity-show',
+      component: () => import('@/views/activities/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
