@@ -130,6 +130,26 @@ const router = createRouter({
       component: () => import('@/views/rotas/DetailView.vue'),
     },
     {
+      path: '/dashboard/schedules',
+      name: 'schedules',
+      component: () => import('@/views/schedules/ListView.vue'),
+    },
+    {
+      path: '/dashboard/schedule/add',
+      name: 'schedule-add',
+      component: () => import('@/views/schedules/AddView.vue'),
+    },
+    {
+      path: '/dashboard/schedule/edit/:id',
+      name: 'schedule-edit',
+      component: () => import('@/views/schedules/EditView.vue'),
+    },
+    {
+      path: '/dashboard/schedule/show/:id',
+      name: 'schedule-show',
+      component: () => import('@/views/schedules/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
