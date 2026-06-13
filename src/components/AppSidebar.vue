@@ -117,13 +117,13 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton>
-                        <span>All Carers</span>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/carers"> All Carers </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton>
-                        <span>Add Carer</span>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/carer/add"> Add Carer </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
