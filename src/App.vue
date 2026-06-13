@@ -20,6 +20,7 @@ import ModeToggle from '@/components/ModeToggle.vue'
 import NotificationView from '@/components/header/NotificationView.vue'
 import { Button } from '@/components/ui/button'
 import NavigationMenu from './components/header/NavigationMenu.vue'
+import { GalleryVerticalEnd } from '@lucide/vue'
 </script>
 
 <template>
