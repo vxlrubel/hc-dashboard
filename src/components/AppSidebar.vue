@@ -108,7 +108,7 @@ import {
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton class="group" tooltip="Users">
                     <Users />
-                    <span>Carers</span>
+                    <span>Clients</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
                     />
@@ -118,12 +118,12 @@ import {
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
                       <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/carers"> All Carers </RouterLink>
+                        <RouterLink to="/dashboard/clients"> All Clients </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
                       <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/carer/add"> Add Carer </RouterLink>
+                        <RouterLink to="/dashboard/client/add"> Add Client </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
