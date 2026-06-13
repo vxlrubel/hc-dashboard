@@ -1,6 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+function toTitle(name: string) {
+  const base = name
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c: string) => c.toUpperCase())
+  return `${base} | HC Dashboard`
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -155,6 +162,10 @@ const router = createRouter({
       component: () => import('../views/DocsView.vue'),
     },
   ],
+})
+
+router.afterEach((to) => {
+  document.title = to.name ? toTitle(to.name as string) : 'HC Dashboard'
 })
 
 export default router
