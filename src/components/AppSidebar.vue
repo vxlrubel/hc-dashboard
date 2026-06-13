@@ -98,7 +98,7 @@ import {
                     <Users />
                     <span>Users</span>
                     <ChevronRight
-                      class="ml-auto transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-90"
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
                     />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
