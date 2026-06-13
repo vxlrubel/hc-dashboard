@@ -186,6 +186,34 @@ import {
                 </CollapsibleContent>
               </Collapsible>
             </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Users">
+                    <Users />
+                    <span>Activities</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/activities"> All Activities </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/activity/add"> Add Activity </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
