@@ -70,6 +70,26 @@ const router = createRouter({
       component: () => import('@/views/funders/DetailView.vue'),
     },
     {
+      path: '/dashboard/forms',
+      name: 'forms',
+      component: () => import('@/views/forms/ListView.vue'),
+    },
+    {
+      path: '/dashboard/form/add',
+      name: 'form-add',
+      component: () => import('@/views/forms/AddView.vue'),
+    },
+    {
+      path: '/dashboard/form/edit/:id',
+      name: 'form-edit',
+      component: () => import('@/views/forms/EditView.vue'),
+    },
+    {
+      path: '/dashboard/form/show/:id',
+      name: 'form-show',
+      component: () => import('@/views/forms/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
