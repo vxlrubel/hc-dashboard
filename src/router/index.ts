@@ -10,9 +10,24 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      path: '/dashboard/employees',
+      name: 'employees',
+      component: () => import('@/views/employees/ListView.vue'),
+    },
+    {
+      path: '/dashboard/employee/add',
+      name: 'employee-add',
+      component: () => import('@/views/employees/AddView.vue'),
+    },
+    {
+      path: '/dashboard/employee/edit/:id',
+      name: 'employee-edit',
+      component: () => import('@/views/employees/EditView.vue'),
+    },
+    {
+      path: '/dashboard/employee/show/:id',
+      name: 'employee-show',
+      component: () => import('@/views/employees/DetailView.vue'),
     },
     {
       path: '/docs',
