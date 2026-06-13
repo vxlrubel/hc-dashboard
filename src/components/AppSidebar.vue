@@ -158,6 +158,34 @@ import {
                 </CollapsibleContent>
               </Collapsible>
             </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Users">
+                    <Users />
+                    <span>Forms</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/forms"> All Forms </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/form/add"> Add Form </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
