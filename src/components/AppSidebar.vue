@@ -21,7 +21,6 @@ import {
   LayoutDashboard,
   ChevronRight,
   Users,
-  Info,
   User,
   CreditCard,
   Settings,
@@ -75,13 +74,61 @@ import {
                 </RouterLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
+
             <SidebarMenuItem>
-              <SidebarMenuButton as-child tooltip="About Us">
-                <RouterLink to="/about">
-                  <Info />
-                  <span>About Us</span>
-                </RouterLink>
-              </SidebarMenuButton>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Users">
+                    <Users />
+                    <span>Employees</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/employees"> All Employees </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/employee/add"> Add Employee </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Users">
+                    <Users />
+                    <span>Carers</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton>
+                        <span>All Carers</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton>
+                        <span>Add Carer</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
