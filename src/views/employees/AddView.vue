@@ -77,7 +77,7 @@ const selectedDate = computed({
   },
 })
 
-const df = new DateFormatter('en-US', { dateStyle: 'long' })
+const df = new DateFormatter('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 const defaultPlaceholder = today(getLocalTimeZone())
 
 const onSubmit = form.handleSubmit((values) => {
