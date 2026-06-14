@@ -33,7 +33,16 @@ const formSchema = toTypedSchema(z.object({
   address: z.string().min(5, 'Address must be at least 5 characters'),
   phone: z.string().min(10, 'Phone must be at least 10 characters').regex(/^[0-9+\-() ]+$/, 'Phone number contains invalid characters'),
   bio: z.string().min(10, 'Bio must be at least 10 characters'),
-  dob: z.string().min(1, 'Date of birth is required'),
+  dob: z.string().min(1, 'Date of birth is required').refine((val) => {
+    if (!val) return true
+    try {
+      const d = parseDate(val)
+      const todayDate = today(getLocalTimeZone())
+      return d.compare(todayDate) <= 0
+    } catch {
+      return true
+    }
+  }, 'Date of birth cannot be in the future'),
 }))
 
 const form = useForm({
@@ -171,6 +180,7 @@ const onSubmit = form.handleSubmit((values) => {
                   <Calendar
                     v-model="selectedDate"
                     :default-placeholder="defaultPlaceholder"
+                    :max-value="today(getLocalTimeZone())"
                     layout="month-and-year"
                     initial-focus
                   />
