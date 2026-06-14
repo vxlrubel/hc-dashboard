@@ -9,13 +9,7 @@ import { cn } from '@/lib/utils'
 import PageTitle from '@/components/PageTitle.vue'
 
 import { Button } from '@/components/ui/button'
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -97,7 +91,7 @@ const onSubmit = form.handleSubmit((values) => {
           <FormItem>
             <FormLabel>First Name</FormLabel>
             <FormControl>
-              <Input placeholder="John" v-bind="componentField" />
+              <Input placeholder="John" class="rounded-0" v-bind="componentField" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -171,7 +165,7 @@ const onSubmit = form.handleSubmit((values) => {
           <FormItem>
             <FormLabel>Date of Birth</FormLabel>
             <FormControl>
-              <Popover>
+              <Popover v-slot="{ close }">
                 <PopoverTrigger as-child>
                   <Button
                     variant="outline"
@@ -197,6 +191,7 @@ const onSubmit = form.handleSubmit((values) => {
                     :max-value="today(getLocalTimeZone())"
                     layout="month-and-year"
                     initial-focus
+                    @update:model-value="close"
                   />
                 </PopoverContent>
               </Popover>
@@ -213,3 +208,10 @@ const onSubmit = form.handleSubmit((values) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+textarea,
+input {
+  border-radius: var(--input-border-radius);
+}
+</style>
