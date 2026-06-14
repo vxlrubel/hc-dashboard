@@ -15,6 +15,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Form,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -88,7 +89,7 @@ const onSubmit = form.handleSubmit((values) => {
   <div>
     <PageTitle title="Add Employee" subtitle="Create a new employee record." />
     <div class="mt-6 max-w-2xl">
-      <form @submit="onSubmit" class="flex flex-col gap-6">
+      <Form @submit="onSubmit" class="flex flex-col gap-6">
         <FormField v-slot="{ componentField }" name="firstName">
           <FormItem>
             <FormLabel>First Name</FormLabel>
@@ -199,7 +200,7 @@ const onSubmit = form.handleSubmit((values) => {
             Cancel
           </Button>
         </div>
-      </form>
+      </Form>
     </div>
   </div>
 </template>
