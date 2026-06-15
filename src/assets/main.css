@@ -128,6 +128,22 @@ body {
   @apply antialiased;
 }
 
+/* ---- page transitions ---- */
+.page-slide-leave-active,
+.page-slide-enter-active {
+  transition: all 0.25s ease;
+}
+
+.page-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.page-slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
 /* hide scrollbar but still scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

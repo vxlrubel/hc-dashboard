@@ -14,8 +14,14 @@ import { TooltipProvider } from '@/components/ui/tooltip'
     <SidebarInset>
       <NavigationView />
       <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <Transition name="page-slide" mode="out-in">
+            <component :is="Component" />
+          </Transition>
+        </RouterView>
       </div>
     </SidebarInset>
   </SidebarProvider>
 </template>
+
+
