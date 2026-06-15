@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import PageTitle from '@/components/PageTitle.vue'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
   <div>
-    <PageTitle title="Add Form" subtitle="Create a new form." />
+    <PageTitle title="Add Form" subtitle="Create a new form.">
+      <RouterLink to="/dashboard/forms" class="button-primary-outline"
+        >All Forms</RouterLink
+      >
+    </PageTitle>
     <p>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod perferendis iusto officia!
       Repudiandae necessitatibus animi, culpa delectus accusamus quis cum voluptatem dolorem,
