@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
+
+const route = useRoute()
 import {
   Sidebar,
   SidebarContent,
@@ -76,7 +78,7 @@ import {
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton as-child tooltip="Dashboard">
+              <SidebarMenuButton as-child tooltip="Dashboard" :isActive="route.path === '/dashboard'">
                 <RouterLink to="/dashboard">
                   <LayoutDashboard />
                   <span>Dashboard</span>
@@ -88,7 +90,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Activities">
+                  <SidebarMenuButton class="group" tooltip="Activities" :isActive="route.path.startsWith('/dashboard/activities') || route.path.startsWith('/dashboard/activity/')">
                     <SquareActivity />
                     <span>Activities</span>
                     <ChevronRight
@@ -99,12 +101,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/activities'">
                         <RouterLink to="/dashboard/activities"> All Activities </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/activity/add'">
                         <RouterLink to="/dashboard/activity/add"> Add Activity </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -117,7 +119,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Schedules">
+                  <SidebarMenuButton class="group" tooltip="Schedules" :isActive="route.path.startsWith('/dashboard/schedules') || route.path.startsWith('/dashboard/schedule/')">
                     <CalendarCheck />
                     <span>Schedules</span>
                     <ChevronRight
@@ -128,12 +130,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/schedules'">
                         <RouterLink to="/dashboard/schedules"> All Schedules </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/schedule/add'">
                         <RouterLink to="/dashboard/schedule/add"> Add Schedule </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -146,7 +148,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
+                  <SidebarMenuButton class="group" tooltip="Users" :isActive="route.path.startsWith('/dashboard/invoices') || route.path.startsWith('/dashboard/invoice/')">
                     <FileText />
                     <span>Invoices</span>
                     <ChevronRight
@@ -157,12 +159,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/invoices'">
                         <RouterLink to="/dashboard/invoices"> All Invoices </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/invoice/add'">
                         <RouterLink to="/dashboard/invoice/add"> Add Invoice </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -175,7 +177,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
+                  <SidebarMenuButton class="group" tooltip="Users" :isActive="route.path.startsWith('/dashboard/rate-sheets') || route.path.startsWith('/dashboard/rate-sheet/')">
                     <ReceiptPoundSterling />
                     <span>Rate Sheets</span>
                     <ChevronRight
@@ -186,12 +188,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/rate-sheets'">
                         <RouterLink to="/dashboard/rate-sheets"> All Rate Sheets </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/rate-sheet/add'">
                         <RouterLink to="/dashboard/rate-sheet/add"> Add Rate Sheet </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -204,7 +206,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Rotas">
+                  <SidebarMenuButton class="group" tooltip="Rotas" :isActive="route.path.startsWith('/dashboard/rotas') || route.path.startsWith('/dashboard/rota/')">
                     <Rotate3d />
                     <span>Rotas</span>
                     <ChevronRight
@@ -215,12 +217,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/rotas'">
                         <RouterLink to="/dashboard/rotas"> All Rotas </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/rota/add'">
                         <RouterLink to="/dashboard/rota/add"> Add Rota </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -233,7 +235,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
+                  <SidebarMenuButton class="group" tooltip="Users" :isActive="route.path.startsWith('/dashboard/leave')">
                     <CalendarX />
                     <span>Leave</span>
                     <ChevronRight
@@ -244,12 +246,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/leave'">
                         <RouterLink to="/dashboard/leave"> All Leave </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/leave/add'">
                         <RouterLink to="/dashboard/leave/add"> Add Leave </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -262,7 +264,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Forms">
+                  <SidebarMenuButton class="group" tooltip="Forms" :isActive="route.path.startsWith('/dashboard/forms') || route.path.startsWith('/dashboard/form/')">
                     <File />
                     <span>Forms</span>
                     <ChevronRight
@@ -273,12 +275,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/forms'">
                         <RouterLink to="/dashboard/forms"> All Forms </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/form/add'">
                         <RouterLink to="/dashboard/form/add"> Add Form </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -297,7 +299,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Employees">
+                  <SidebarMenuButton class="group" tooltip="Employees" :isActive="route.path.startsWith('/dashboard/employees') || route.path.startsWith('/dashboard/employee/')">
                     <Contact />
                     <span>Employees</span>
                     <ChevronRight
@@ -308,12 +310,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/employees'">
                         <RouterLink to="/dashboard/employees"> All Employees </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/employee/add'">
                         <RouterLink to="/dashboard/employee/add"> Add Employee </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -325,7 +327,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Clients">
+                  <SidebarMenuButton class="group" tooltip="Clients" :isActive="route.path.startsWith('/dashboard/clients') || route.path.startsWith('/dashboard/client/')">
                     <Users />
                     <span>Clients</span>
                     <ChevronRight
@@ -336,12 +338,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/clients'">
                         <RouterLink to="/dashboard/clients"> All Clients </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/client/add'">
                         <RouterLink to="/dashboard/client/add"> Add Client </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -353,7 +355,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Funders">
+                  <SidebarMenuButton class="group" tooltip="Funders" :isActive="route.path.startsWith('/dashboard/funders') || route.path.startsWith('/dashboard/funder/')">
                     <CircleUserRound />
                     <span>Funders</span>
                     <ChevronRight
@@ -364,12 +366,12 @@ import {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/funders'">
                         <RouterLink to="/dashboard/funders"> All Funders </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                     <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
+                      <SidebarMenuButton as-child :isActive="route.path === '/dashboard/funder/add'">
                         <RouterLink to="/dashboard/funder/add"> Add Funder </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
@@ -381,7 +383,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
+                  <SidebarMenuButton class="group" tooltip="Users" :isActive="route.path.startsWith('/dashboard/users')">
                     <Users />
                     <span>Users</span>
                     <ChevronRight
