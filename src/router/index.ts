@@ -157,6 +157,26 @@ const router = createRouter({
       component: () => import('@/views/schedules/DetailView.vue'),
     },
     {
+      path: '/dashboard/invoices',
+      name: 'invoices',
+      component: () => import('@/views/invoices/ListView.vue'),
+    },
+    {
+      path: '/dashboard/invoice/add',
+      name: 'invoice-add',
+      component: () => import('@/views/invoices/AddView.vue'),
+    },
+    {
+      path: '/dashboard/invoice/edit/:id',
+      name: 'invoice-edit',
+      component: () => import('@/views/invoices/EditView.vue'),
+    },
+    {
+      path: '/dashboard/invoice/show/:id',
+      name: 'invoice-show',
+      component: () => import('@/views/invoices/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
