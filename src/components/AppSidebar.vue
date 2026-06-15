@@ -33,6 +33,7 @@ import {
   CalendarCheck,
   Rotate3d,
   ReceiptPoundSterling,
+  CalendarX,
 } from '@lucide/vue'
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
@@ -255,7 +256,7 @@ import {
               <Collapsible>
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                    <CalendarX />
                     <span>Leave</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
