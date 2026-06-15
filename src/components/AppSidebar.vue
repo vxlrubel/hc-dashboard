@@ -84,34 +84,7 @@ import {
               </SidebarMenuButton>
             </SidebarMenuItem>
 
-            <SidebarMenuItem>
-              <Collapsible>
-                <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Forms">
-                    <File />
-                    <span>Forms</span>
-                    <ChevronRight
-                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/forms"> All Forms </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/form/add"> Add Form </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarMenuItem>
-
+            <!-- Activity -->
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
@@ -140,34 +113,7 @@ import {
               </Collapsible>
             </SidebarMenuItem>
 
-            <SidebarMenuItem>
-              <Collapsible>
-                <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Rotas">
-                    <Rotate3d />
-                    <span>Rotas</span>
-                    <ChevronRight
-                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/rotas"> All Rotas </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/rota/add"> Add Rota </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarMenuItem>
-
+            <!-- Schedules -->
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
@@ -196,6 +142,7 @@ import {
               </Collapsible>
             </SidebarMenuItem>
 
+            <!-- Invoices -->
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
@@ -224,6 +171,7 @@ import {
               </Collapsible>
             </SidebarMenuItem>
 
+            <!-- Rate Sheets -->
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
@@ -252,6 +200,36 @@ import {
               </Collapsible>
             </SidebarMenuItem>
 
+            <!-- Rotas -->
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Rotas">
+                    <Rotate3d />
+                    <span>Rotas</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/rotas"> All Rotas </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/rota/add"> Add Rota </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
+            <!-- Leave -->
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
@@ -273,6 +251,35 @@ import {
                     <SidebarMenuSubItem>
                       <SidebarMenuButton as-child>
                         <RouterLink to="/dashboard/leave/add"> Add Leave </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
+            <!-- form -->
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Forms">
+                    <File />
+                    <span>Forms</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/forms"> All Forms </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/form/add"> Add Form </RouterLink>
                       </SidebarMenuButton>
                     </SidebarMenuSubItem>
                   </SidebarMenuSub>
