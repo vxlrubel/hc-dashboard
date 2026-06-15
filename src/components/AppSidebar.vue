@@ -86,90 +86,6 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Employees">
-                    <Contact />
-                    <span>Employees</span>
-                    <ChevronRight
-                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/employees"> All Employees </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/employee/add"> Add Employee </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarMenuItem>
-
-            <SidebarMenuItem>
-              <Collapsible>
-                <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Clients">
-                    <Users />
-                    <span>Clients</span>
-                    <ChevronRight
-                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/clients"> All Clients </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/client/add"> Add Client </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarMenuItem>
-
-            <SidebarMenuItem>
-              <Collapsible>
-                <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Funders">
-                    <CircleUserRound />
-                    <span>Funders</span>
-                    <ChevronRight
-                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/funders"> All Funders </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuButton as-child>
-                        <RouterLink to="/dashboard/funder/add"> Add Funder </RouterLink>
-                      </SidebarMenuButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarMenuItem>
-
-            <SidebarMenuItem>
-              <Collapsible>
-                <CollapsibleTrigger as-child>
                   <SidebarMenuButton class="group" tooltip="Forms">
                     <File />
                     <span>Forms</span>
@@ -339,9 +255,93 @@ import {
       </SidebarGroup>
 
       <SidebarGroup>
-        <SidebarGroupLabel>Settings</SidebarGroupLabel>
+        <SidebarGroupLabel>Users</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Employees">
+                    <Contact />
+                    <span>Employees</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/employees"> All Employees </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/employee/add"> Add Employee </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Clients">
+                    <Users />
+                    <span>Clients</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/clients"> All Clients </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/client/add"> Add Client </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Funders">
+                    <CircleUserRound />
+                    <span>Funders</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/funders"> All Funders </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/funder/add"> Add Funder </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
+
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
