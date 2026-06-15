@@ -197,6 +197,26 @@ const router = createRouter({
       component: () => import('@/views/rate-sheets/DetailView.vue'),
     },
     {
+      path: '/dashboard/leave',
+      name: 'leave',
+      component: () => import('@/views/leave/ListView.vue'),
+    },
+    {
+      path: '/dashboard/leave/add',
+      name: 'leave-add',
+      component: () => import('@/views/leave/AddView.vue'),
+    },
+    {
+      path: '/dashboard/leave/edit/:id',
+      name: 'leave-edit',
+      component: () => import('@/views/leave/EditView.vue'),
+    },
+    {
+      path: '/dashboard/leave/show/:id',
+      name: 'leave-show',
+      component: () => import('@/views/leave/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
