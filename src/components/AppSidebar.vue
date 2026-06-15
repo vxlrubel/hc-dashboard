@@ -21,10 +21,18 @@ import {
   LayoutDashboard,
   ChevronRight,
   Users,
+  Contact,
   User,
+  CircleUserRound,
   CreditCard,
   Settings,
   LogOut,
+  File,
+  SquareActivity,
+  FileText,
+  CalendarCheck,
+  Rotate3d,
+  ReceiptPoundSterling,
 } from '@lucide/vue'
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
@@ -78,8 +86,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Employees">
+                    <Contact />
                     <span>Employees</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -106,7 +114,7 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
+                  <SidebarMenuButton class="group" tooltip="Clients">
                     <Users />
                     <span>Clients</span>
                     <ChevronRight
@@ -134,8 +142,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Funders">
+                    <CircleUserRound />
                     <span>Funders</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -162,8 +170,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Forms">
+                    <File />
                     <span>Forms</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -190,8 +198,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Activities">
+                    <SquareActivity />
                     <span>Activities</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -218,8 +226,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Rotas">
+                    <Rotate3d />
                     <span>Rotas</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -246,8 +254,8 @@ import {
             <SidebarMenuItem>
               <Collapsible>
                 <CollapsibleTrigger as-child>
-                  <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                  <SidebarMenuButton class="group" tooltip="Schedules">
+                    <CalendarCheck />
                     <span>Schedules</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -275,7 +283,7 @@ import {
               <Collapsible>
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                    <FileText />
                     <span>Invoices</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
@@ -303,7 +311,7 @@ import {
               <Collapsible>
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton class="group" tooltip="Users">
-                    <Users />
+                    <ReceiptPoundSterling />
                     <span>Rate Sheets</span>
                     <ChevronRight
                       class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
