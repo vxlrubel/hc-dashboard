@@ -240,7 +240,16 @@ const router = createRouter({
           name: 'leave-show',
           component: () => import('@/views/leave/DetailView.vue'),
         },
+        {
+          path: ':pathMatch(.*)*',
+          component: () => import('@/views/NotFoundView.vue'),
+        },
       ],
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found-global',
+      component: () => import('@/views/NotFoundView.vue'),
     },
   ],
 })
