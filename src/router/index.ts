@@ -177,6 +177,26 @@ const router = createRouter({
       component: () => import('@/views/invoices/DetailView.vue'),
     },
     {
+      path: '/dashboard/rate-sheets',
+      name: 'rate-sheets',
+      component: () => import('@/views/rate-sheets/ListView.vue'),
+    },
+    {
+      path: '/dashboard/rate-sheet/add',
+      name: 'rate-sheet-add',
+      component: () => import('@/views/rate-sheets/AddView.vue'),
+    },
+    {
+      path: '/dashboard/rate-sheet/edit/:id',
+      name: 'rate-sheet-edit',
+      component: () => import('@/views/rate-sheets/EditView.vue'),
+    },
+    {
+      path: '/dashboard/rate-sheet/show/:id',
+      name: 'rate-sheet-show',
+      component: () => import('@/views/rate-sheets/DetailView.vue'),
+    },
+    {
       path: '/docs',
       name: 'docs',
       component: () => import('../views/DocsView.vue'),
