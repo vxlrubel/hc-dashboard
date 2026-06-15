@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from '@lucide/vue'
 import { RouterLink } from 'vue-router'
 import {
   NavigationMenu,
@@ -16,125 +15,152 @@ import {
   <NavigationMenu :viewport="false">
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Create</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <ul class="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[1fr_1fr]">
             <li class="row-span-3">
               <NavigationMenuLink as-child>
-                <a
-                  class="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                  href="/"
-                >
-                  <div class="mt-4 mb-2 text-lg font-medium">shadcn/ui</div>
-                  <p class="text-muted-foreground text-sm leading-tight">
-                    Beautifully designed components built with Tailwind CSS.
-                  </p>
-                </a>
+                <RouterLink to="/dashboard/form/add">
+                  <div class="font-medium">Add Form</div>
+                  <div class="text-muted-foreground">Create a new interactive form.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/activity/add">
+                  <div class="font-medium">Add Activity</div>
+                  <div class="text-muted-foreground">Create a new activity.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/rota/add">
+                  <div class="font-medium">Add Rota</div>
+                  <div class="text-muted-foreground">Create a new rota.</div>
+                </RouterLink>
               </NavigationMenuLink>
             </li>
             <li>
               <NavigationMenuLink as-child>
-                <RouterLink to="/components">
-                  <div class="font-medium">Components</div>
-                  <div class="text-muted-foreground">Browse all components in the library.</div>
+                <RouterLink to="/dashboard/schedule/add">
+                  <div class="font-medium">Add Schedule</div>
+                  <div class="text-muted-foreground">Create a new schedule.</div>
                 </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <RouterLink to="/docs">
-                  <div class="font-medium">Documentation</div>
-                  <div class="text-muted-foreground">Learn how to use the library.</div>
+                <RouterLink to="/dashboard/invoice/add">
+                  <div class="font-medium">Add Invoice</div>
+                  <div class="text-muted-foreground">Create a new invoice.</div>
                 </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <RouterLink to="/blog">
-                  <div class="font-medium">Blog</div>
-                  <div class="text-muted-foreground">Read our latest blog posts.</div>
+                <RouterLink to="/dashboard/rate-sheet/add">
+                  <div class="font-medium">Add Rate Sheet</div>
+                  <div class="text-muted-foreground">Create a new rate sheet.</div>
                 </RouterLink>
               </NavigationMenuLink>
             </li>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
+
       <NavigationMenuItem>
         <NavigationMenuTrigger>List</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[300px] gap-4">
+          <ul class="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[1fr_1fr]">
+            <li class="row-span-3">
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/forms">
+                  <div class="font-medium">Forms</div>
+                  <div class="text-muted-foreground">View all interactive forms.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/activities">
+                  <div class="font-medium">Activities</div>
+                  <div class="text-muted-foreground">View all activities.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/rotas">
+                  <div class="font-medium">Rota</div>
+                  <div class="text-muted-foreground">View all rotas.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+            </li>
             <li>
               <NavigationMenuLink as-child>
-                <a href="#">
-                  <div class="font-medium">Components</div>
-                  <div class="text-muted-foreground">Browse all components in the library.</div>
-                </a>
+                <RouterLink to="/dashboard/schedules">
+                  <div class="font-medium">Schedule</div>
+                  <div class="text-muted-foreground">View all schedules.</div>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">
-                  <div class="font-medium">Documentation</div>
-                  <div class="text-muted-foreground">Learn how to use the library.</div>
-                </a>
+                <RouterLink to="/dashboard/invoices">
+                  <div class="font-medium">Invoices</div>
+                  <div class="text-muted-foreground">View all invoices.</div>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">
-                  <div class="font-medium">Blog</div>
-                  <div class="text-muted-foreground">Read our latest blog posts.</div>
-                </a>
+                <RouterLink to="/dashboard/rate-sheets">
+                  <div class="font-medium">Rate Sheets</div>
+                  <div class="text-muted-foreground">View all rate sheets.</div>
+                </RouterLink>
               </NavigationMenuLink>
             </li>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
+
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Application Users</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[200px] gap-4">
+          <ul class="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[1fr_1fr]">
+            <li class="row-span-3">
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/employees">
+                  <div class="font-medium">Employees</div>
+                  <div class="text-muted-foreground">View all employee records.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/clients">
+                  <div class="font-medium">Clients</div>
+                  <div class="text-muted-foreground">View all client records.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+              <NavigationMenuLink as-child>
+                <RouterLink to="/dashboard/funders">
+                  <div class="font-medium">Funders</div>
+                  <div class="text-muted-foreground">View all funders records.</div>
+                </RouterLink>
+              </NavigationMenuLink>
+            </li>
             <li>
               <NavigationMenuLink as-child>
-                <a href="#">Components</a>
+                <RouterLink to="/dashboard/employee/add">
+                  <div class="font-medium">Add Employee</div>
+                  <div class="text-muted-foreground">Add a new employee record.</div>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">Documentation</a>
+                <RouterLink to="/dashboard/client/add">
+                  <div class="font-medium">Add Client</div>
+                  <div class="text-muted-foreground">Add a new client record.</div>
+                </RouterLink>
               </NavigationMenuLink>
               <NavigationMenuLink as-child>
-                <a href="#">Blocks</a>
+                <RouterLink to="/dashboard/funder/add">
+                  <div class="font-medium">Add Funder</div>
+                  <div class="text-muted-foreground">Add a new funder record.</div>
+                </RouterLink>
               </NavigationMenuLink>
             </li>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul class="grid w-[200px] gap-4">
-            <li>
-              <NavigationMenuLink as-child>
-                <a href="#" class="flex-row items-center gap-2">
-                  <CircleHelpIcon />
-                  Backlog
-                </a>
-              </NavigationMenuLink>
-              <NavigationMenuLink as-child>
-                <a href="#" class="flex-row items-center gap-2">
-                  <CircleIcon />
-                  To Do
-                </a>
-              </NavigationMenuLink>
-              <NavigationMenuLink as-child>
-                <a href="#" class="flex-row items-center gap-2">
-                  <CircleCheckIcon />
-                  Done
-                </a>
-              </NavigationMenuLink>
-            </li>
-          </ul>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
+
       <NavigationMenuItem>
         <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
           <RouterLink to="/docs">Docs</RouterLink>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
-          <RouterLink to="/">Welcome</RouterLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>

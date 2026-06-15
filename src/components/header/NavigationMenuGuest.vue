@@ -23,7 +23,7 @@ import {
       <NavigationMenuItem>
         <NavigationMenuTrigger>Home</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <ul class="grid gap-2 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr]">
             <li class="row-span-3">
               <NavigationMenuLink as-child>
                 <a
