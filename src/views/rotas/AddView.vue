@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import PageTitle from '@/components/PageTitle.vue'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
   <div>
-    <PageTitle title="Add Rota" subtitle="Create a new rota." />
+    <PageTitle title="Add Rota" subtitle="Create a new rota.">
+      <RouterLink to="/dashboard/rotas" class="button-primary-outline"
+        >All Rotas</RouterLink
+      >
+    </PageTitle>
     <p>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod perferendis iusto officia!
       Repudiandae necessitatibus animi, culpa delectus accusamus quis cum voluptatem dolorem,
