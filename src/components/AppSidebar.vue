@@ -1,7 +1,17 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { Button } from '@/components/ui/button'
 
 const route = useRoute()
+
+const openStates = reactive<Record<string, boolean>>({})
+
+function collapseAll() {
+  for (const key of Object.keys(openStates)) {
+    openStates[key] = false
+  }
+}
 import {
   Sidebar,
   SidebarContent,
@@ -65,8 +75,8 @@ import {
               <GalleryVerticalEnd class="size-4" />
             </div>
             <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-semibold">HC-Dashboard</span>
-              <span class="truncate text-xs">Enterprise</span>
+              <span class="truncate font-semibold">Dashboard</span>
+              <span class="truncate text-xs">Enterprise Application</span>
             </div>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -77,7 +87,7 @@ import {
       <SidebarGroup>
         <SidebarGroupLabel class="flex items-center justify-between">
           <span>General</span>
-          <Button valiant="ghost" size="sm">
+          <Button variant="ghost" size="sm" @click="collapseAll">
             <ListCollapse class="size-4" />
           </Button>
         </SidebarGroupLabel>
@@ -98,7 +108,7 @@ import {
 
             <!-- Activity -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.activities">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -140,7 +150,7 @@ import {
 
             <!-- Schedules -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.schedules">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -179,7 +189,7 @@ import {
 
             <!-- Invoices -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.invoices">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -218,7 +228,7 @@ import {
 
             <!-- Rate Sheets -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.rateSheets">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -260,7 +270,7 @@ import {
 
             <!-- Rotas -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.rotas">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -296,7 +306,7 @@ import {
 
             <!-- Leave -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.leave">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -329,7 +339,7 @@ import {
 
             <!-- form -->
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.forms">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -371,7 +381,7 @@ import {
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.employees">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -409,7 +419,7 @@ import {
             </SidebarMenuItem>
 
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.clients">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -447,7 +457,7 @@ import {
             </SidebarMenuItem>
 
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.funders">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
@@ -485,7 +495,7 @@ import {
             </SidebarMenuItem>
 
             <SidebarMenuItem>
-              <Collapsible>
+              <Collapsible v-model:open="openStates.users">
                 <CollapsibleTrigger as-child>
                   <SidebarMenuButton
                     class="group"
