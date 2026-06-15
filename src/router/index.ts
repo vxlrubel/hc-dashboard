@@ -2,9 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 function toTitle(name: string) {
-  const base = name
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (c: string) => c.toUpperCase())
+  const base = name.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
   return `${base} | HC Dashboard`
 }
 
@@ -15,6 +13,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/DashboardView.vue'),
     },
     {
       path: '/dashboard/employees',

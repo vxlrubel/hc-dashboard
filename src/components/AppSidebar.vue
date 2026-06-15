@@ -77,7 +77,7 @@ import {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton as-child tooltip="Dashboard">
-                <RouterLink to="/">
+                <RouterLink to="/dashboard">
                   <LayoutDashboard />
                   <span>Dashboard</span>
                 </RouterLink>
