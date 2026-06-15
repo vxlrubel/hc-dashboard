@@ -270,6 +270,34 @@ import {
                 </CollapsibleContent>
               </Collapsible>
             </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <Collapsible>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton class="group" tooltip="Users">
+                    <Users />
+                    <span>Invoices</span>
+                    <ChevronRight
+                      class="ml-auto transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-90"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/invoices"> All Invoices </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuButton as-child>
+                        <RouterLink to="/dashboard/invoice/add"> Add Invoice </RouterLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
