@@ -36,6 +36,7 @@ import {
   Rotate3d,
   ReceiptPoundSterling,
   CalendarX,
+  ListCollapse,
 } from '@lucide/vue'
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
@@ -74,7 +75,12 @@ import {
 
     <SidebarContent>
       <SidebarGroup>
-        <SidebarGroupLabel>General</SidebarGroupLabel>
+        <SidebarGroupLabel class="flex items-center justify-between">
+          <span>General</span>
+          <Button valiant="ghost" size="sm">
+            <ListCollapse class="size-4" />
+          </Button>
+        </SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
@@ -572,12 +578,12 @@ import {
 </template>
 
 <style scoped>
-:deep([data-slot="sidebar-menu-button"][data-active="true"]) {
+:deep([data-slot='sidebar-menu-button'][data-active='true']) {
   background-color: oklch(63.5% 0.22 250) !important;
   color: white !important;
 }
 
-:deep([data-slot="sidebar-menu-sub"] [data-slot="sidebar-menu-button"][data-active="true"]) {
+:deep([data-slot='sidebar-menu-sub'] [data-slot='sidebar-menu-button'][data-active='true']) {
   background-color: transparent !important;
   color: oklch(63.5% 0.22 250) !important;
 }
