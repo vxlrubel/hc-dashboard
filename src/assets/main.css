@@ -45,6 +45,20 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+@theme {
+  --color-theme-50: oklch(97.5% 0.02 260);
+  --color-theme-100: oklch(94.5% 0.04 258);
+  --color-theme-200: oklch(88.5% 0.08 256);
+  --color-theme-300: oklch(80.5% 0.13 254);
+  --color-theme-400: oklch(71.5% 0.18 252);
+  --color-theme-500: oklch(63.5% 0.22 250);
+  --color-theme-600: oklch(57.5% 0.24 248);
+  --color-theme-700: oklch(50.5% 0.21 246);
+  --color-theme-800: oklch(44.5% 0.18 244);
+  --color-theme-900: oklch(39.5% 0.15 242);
+  --color-theme-950: oklch(27.5% 0.1 240);
+}
+
 :root {
   --input-border-radius: 4px;
   --radius: 0.625rem;
@@ -126,6 +140,34 @@
 
 body {
   @apply antialiased;
+}
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.button-primary {
+  @apply text-white select-none text-sm outline-0 hover:bg-theme-600 focus:ring-2 focus:ring-theme-300 focus:ring-offset-1 focus:bg-theme-500 font-semibold h-8 inline-flex items-center justify-center px-3 rounded bg-theme-500 cursor-pointer disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
+}
+
+.button-primary-outline {
+  @apply text-theme-500 select-none text-sm outline-0 hover:bg-theme-600 hover:text-white focus:ring-2 focus:ring-theme-300 focus:ring-offset-1 dark:focus:ring-offset-[#0A0A0A] focus:bg-theme-500 focus:text-white  font-semibold h-8 inline-flex items-center justify-center px-3 rounded border-2 cursor-pointer border-theme-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
+}
+.button-cancel {
+  @apply text-white select-none text-sm outline-0 bg-rose-500 hover:bg-rose-600 hover:text-white focus:ring-2 focus:ring-rose-300 focus:ring-offset-1 focus:bg-rose-500 focus:text-white  font-semibold h-8 inline-flex items-center justify-center px-3 rounded border-2 cursor-pointer border-rose-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
+}
+.button-success {
+  @apply text-white select-none text-sm outline-0 bg-green-500 hover:bg-green-600 hover:text-white focus:ring-2 focus:ring-green-300 focus:ring-offset-1 focus:bg-green-500 focus:text-white  font-semibold h-8 inline-flex items-center justify-center px-3 rounded border-2 cursor-pointer border-green-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
+}
+
+.button-warning {
+  @apply text-white select-none text-sm outline-0 bg-amber-500 hover:bg-amber-600 hover:text-white focus:ring-2 focus:ring-amber-300 focus:ring-offset-1 focus:bg-amber-500 focus:text-white  font-semibold h-8 inline-flex items-center justify-center px-3 rounded border-2 cursor-pointer border-amber-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
+}
+
+.button-secondary {
+  @apply text-white select-none text-sm outline-0 bg-slate-800 hover:bg-slate-700 hover:text-white focus:ring-2 focus:ring-slate-300 focus:ring-offset-1 focus:bg-slate-600 focus:text-white  font-semibold h-8 inline-flex items-center justify-center px-3 rounded border-2 cursor-pointer border-slate-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200 disabled:cursor-not-allowed disabled:select-none transition-colors duration-200;
 }
 
 /* ---- page transitions ---- */
