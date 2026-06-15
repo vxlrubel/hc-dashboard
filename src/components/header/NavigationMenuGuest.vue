@@ -16,6 +16,11 @@ import {
   <NavigationMenu :viewport="false">
     <NavigationMenuList>
       <NavigationMenuItem>
+        <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
+          <RouterLink to="/dashboard">Dashboard</RouterLink>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
         <NavigationMenuTrigger>Home</NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul class="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -130,11 +135,6 @@ import {
       <NavigationMenuItem>
         <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
           <RouterLink to="/docs">Docs</RouterLink>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuLink as-child :class="navigationMenuTriggerStyle()">
-          <RouterLink to="/">Welcome</RouterLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
