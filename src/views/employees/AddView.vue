@@ -7,6 +7,7 @@ import { parseDate, DateFormatter, getLocalTimeZone, today } from '@internationa
 import { CalendarIcon } from '@lucide/vue'
 import { cn } from '@/lib/utils'
 import PageTitle from '@/components/PageTitle.vue'
+import { RouterLink } from 'vue-router'
 
 import { Button } from '@/components/ui/button'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -84,7 +85,11 @@ const onSubmit = form.handleSubmit((values) => {
 
 <template>
   <div>
-    <PageTitle title="Add Employee" subtitle="Create a new employee record." />
+    <PageTitle title="Add Employee" subtitle="Create a new employee record.">
+      <RouterLink to="/dashboard/employees" class="button-primary-outline"
+        >All Employees</RouterLink
+      >
+    </PageTitle>
     <div class="mt-6 max-w-3xl mx-auto">
       <form @submit="onSubmit" class="flex flex-col gap-6">
         <FormField v-slot="{ componentField }" name="firstName">
