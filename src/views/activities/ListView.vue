@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useRoute, useRouter } from 'vue-router'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
 import {
@@ -18,6 +20,18 @@ import { Label } from '@/components/ui/label'
 import { ukFormat } from '@/utils/dateFormat.js'
 import { useActivitiesStore } from '@/stores/activity'
 const activityStore = useActivitiesStore()
+
+const route = useRoute()
+const router = useRouter()
+
+const pageParam = route.query.page
+if (pageParam) {
+  activityStore.page = Number(pageParam)
+}
+
+watch(() => activityStore.page, (newPage) => {
+  router.replace({ query: { page: String(newPage) } })
+})
 
 const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs(activityStore)
 </script>
