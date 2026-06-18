@@ -1,5 +1,6 @@
-export function ukFormat(dateString) {
+export function ukFormat(dateString: string): string {
   const date = new Date(dateString)
+  if (isNaN(date.getTime())) return dateString
 
   const datePart = date.toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -14,6 +15,5 @@ export function ukFormat(dateString) {
     hour12: true,
   })
 
-  // return `${datePart}<br><span class="text-[12px] text-muted-foreground">${timePart}</span>`
-  return `${datePart}\n${timePart}`
+  return `${datePart}<br><span class="text-[12px] text-muted-foreground">${timePart}</span>`
 }

@@ -38,8 +38,8 @@ const { activities } = activityStore
           <TableHead>Title</TableHead>
           <TableHead>Description</TableHead>
           <TableHead> Status </TableHead>
-          <TableHead> Created at </TableHead>
-          <TableHead> Updated at </TableHead>
+          <TableHead class="w-35"> Created at </TableHead>
+          <TableHead class="w-35"> Updated at </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -54,9 +54,9 @@ const { activities } = activityStore
           <TableCell>{{ description }}</TableCell>
           <TableCell> {{ status }} </TableCell>
           <TableCell>
-            <pre>{{ ukFormat(created_at) }}</pre>
+            <span v-html="ukFormat(created_at)"></span>
           </TableCell>
-          <TableCell> {{ updated_at }} </TableCell>
+          <TableCell> <span v-html="ukFormat(updated_at)"></span> </TableCell>
         </TableRow>
       </TableBody>
     </Table>
