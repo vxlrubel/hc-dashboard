@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
 import {
@@ -9,13 +10,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+
+import ActivityPagination from './ActivityPagination.vue'
+
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { ukFormat } from '@/utils/dateFormat.js'
 import { useActivitiesStore } from '@/stores/activity'
 const activityStore = useActivitiesStore()
 
-const { activities } = activityStore
+const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs(activityStore)
 </script>
 
 <template>
@@ -29,8 +33,8 @@ const { activities } = activityStore
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead class="w-10">
-            <div class="flex items-center">
+          <TableHead class="w-15">
+            <div class="flex items-center gap-1">
               <Checkbox id="checkAll" />
               <Label for="checkAll">All</Label>
             </div>
@@ -44,7 +48,7 @@ const { activities } = activityStore
       </TableHeader>
       <TableBody>
         <TableRow
-          v-for="{ id, title, description, status, created_at, updated_at } in activities"
+          v-for="{ id, title, description, status, created_at, updated_at } in paginatedActivities"
           :key="id"
         >
           <TableCell class="font-medium">
@@ -60,5 +64,7 @@ const { activities } = activityStore
         </TableRow>
       </TableBody>
     </Table>
+
+    <ActivityPagination v-model:page="page" :total="totalActivities" :items-per-page="itemsPerPage" />
   </div>
 </template>
