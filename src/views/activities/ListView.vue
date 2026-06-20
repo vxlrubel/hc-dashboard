@@ -27,10 +27,16 @@ const router = useRouter()
 const pageParam = route.query.page
 if (pageParam) {
   activityStore.page = Number(pageParam)
+} else {
+  activityStore.page = 1
 }
 
 watch(() => activityStore.page, (newPage) => {
-  router.replace({ query: { page: String(newPage) } })
+  if (newPage > 1) {
+    router.replace({ query: { page: String(newPage) } })
+  } else {
+    router.replace({ query: {} })
+  }
 })
 
 const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs(activityStore)
