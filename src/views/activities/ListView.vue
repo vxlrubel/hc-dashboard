@@ -70,7 +70,7 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
       <div class="flex items-center gap-2">
         <Select>
           <SelectTrigger class="w-40">
-            <SelectValue placeholder="Select bulk action" />
+            <SelectValue placeholder="Bulk action" />
           </SelectTrigger>
           <SelectContent class="w-40">
             <SelectGroup>
