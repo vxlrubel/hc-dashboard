@@ -25,7 +25,7 @@ import {
 
 import type { DateValue } from '@internationalized/date'
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
-import { CalendarIcon, X } from '@lucide/vue'
+import { CalendarIcon, X, Loader } from '@lucide/vue'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -98,7 +98,7 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button variant="outline"> Apply </Button>
+        <Button variant="outline"> Apply <Loader class="animate-spin" /></Button>
       </div>
       <div class="flex items-center">
         <Popover v-slot="{ close }">
@@ -170,47 +170,59 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
       </div>
     </div>
 
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead class="w-15">
-            <div class="flex items-center gap-1">
-              <Checkbox id="checkAll" />
-              <Label for="checkAll">All</Label>
-            </div>
-          </TableHead>
-          <TableHead class="min-w-60 w-60">Title</TableHead>
-          <TableHead class="min-w-70">Description</TableHead>
-          <TableHead class="min-w-35 w-35"> Status </TableHead>
-          <TableHead class="w-35"> Created at </TableHead>
-          <TableHead class="w-35"> Updated at </TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow
-          v-for="{ id, title, description, status, created_at, updated_at } in paginatedActivities"
-          :key="id"
-        >
-          <TableCell class="font-medium">
-            <Checkbox />
-          </TableCell>
-          <TableCell>{{ title }}</TableCell>
-          <TableCell>{{ description }}</TableCell>
-          <TableCell>
-            <span v-html="getStatus(status)"></span>
-          </TableCell>
-          <TableCell>
-            <span v-html="ukFormat(created_at)"></span>
-          </TableCell>
-          <TableCell> <span v-html="ukFormat(updated_at)"></span> </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]">
+        <Loader class="animate-spin" />
+      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead class="w-15">
+              <div class="flex items-center gap-1">
+                <Checkbox id="checkAll" />
+                <Label for="checkAll">All</Label>
+              </div>
+            </TableHead>
+            <TableHead class="min-w-60 w-60">Title</TableHead>
+            <TableHead class="min-w-70">Description</TableHead>
+            <TableHead class="min-w-35 w-35"> Status </TableHead>
+            <TableHead class="w-35"> Created at </TableHead>
+            <TableHead class="w-35"> Updated at </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow
+            v-for="{
+              id,
+              title,
+              description,
+              status,
+              created_at,
+              updated_at,
+            } in paginatedActivities"
+            :key="id"
+          >
+            <TableCell class="font-medium">
+              <Checkbox />
+            </TableCell>
+            <TableCell>{{ title }}</TableCell>
+            <TableCell>{{ description }}</TableCell>
+            <TableCell>
+              <span v-html="getStatus(status)"></span>
+            </TableCell>
+            <TableCell>
+              <span v-html="ukFormat(created_at)"></span>
+            </TableCell>
+            <TableCell> <span v-html="ukFormat(updated_at)"></span> </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
 
-    <ActivityPagination
-      v-model:page="page"
-      :total="totalActivities"
-      :items-per-page="itemsPerPage"
-    />
+      <ActivityPagination
+        v-model:page="page"
+        :total="totalActivities"
+        :items-per-page="itemsPerPage"
+      />
+    </div>
   </div>
 </template>
