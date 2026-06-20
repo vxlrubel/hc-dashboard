@@ -25,7 +25,7 @@ import {
 
 import type { DateValue } from '@internationalized/date'
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
-import { CalendarIcon } from '@lucide/vue'
+import { CalendarIcon, X } from '@lucide/vue'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -107,13 +107,21 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
               variant="outline"
               :class="
                 cn(
-                  'w-40 justify-start text-left font-normal rounded',
+                  'w-40 justify-start text-left font-normal rounded relative',
                   !date && 'text-muted-foreground',
                 )
               "
             >
               <CalendarIcon />
               {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
+
+              <span
+                v-if="date"
+                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                @click.stop="date = ''"
+              >
+                <X />
+              </span>
             </Button>
           </PopoverTrigger>
           <PopoverContent class="w-auto p-0" align="start">
@@ -132,13 +140,20 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
               variant="outline"
               :class="
                 cn(
-                  'w-40 justify-start text-left font-normal rounded ms-2',
+                  'w-40 justify-start text-left font-normal rounded ms-2 relative',
                   !toDate && 'text-muted-foreground',
                 )
               "
             >
               <CalendarIcon />
               {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
+              <span
+                v-if="toDate"
+                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                @click.stop="toDate = ''"
+              >
+                <X />
+              </span>
             </Button>
           </PopoverTrigger>
           <PopoverContent class="w-auto p-0" align="start">
