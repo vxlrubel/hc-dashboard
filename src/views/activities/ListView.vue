@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
-import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
 import {
   Table,
   TableBody,
@@ -24,6 +23,14 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
+import type { DateValue } from '@internationalized/date'
+import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
+import { CalendarIcon } from '@lucide/vue'
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+
 import ActivityPagination from './ActivityPagination.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
@@ -42,6 +49,15 @@ if (pageParam) {
 } else {
   activityStore.page = 1
 }
+
+const defaultPlaceholder = today(getLocalTimeZone())
+const date = ref() as Ref<DateValue>
+const toDate = ref() as Ref<DateValue>
+const df = new DateFormatter('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+})
 
 watch(
   () => activityStore.page,
@@ -66,7 +82,7 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
       >
     </PageTitle>
 
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4 mb-2">
       <div class="flex items-center gap-2">
         <Select>
           <SelectTrigger class="w-40">
@@ -82,9 +98,61 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
             </SelectGroup>
           </SelectContent>
         </Select>
-        <PrimaryButton label="Apply" />
+        <Button variant="outline"> Apply </Button>
       </div>
-      <div></div>
+      <div class="flex items-center">
+        <Popover v-slot="{ close }">
+          <PopoverTrigger as-child>
+            <Button
+              variant="outline"
+              :class="
+                cn(
+                  'w-40 justify-start text-left font-normal rounded',
+                  !date && 'text-muted-foreground',
+                )
+              "
+            >
+              <CalendarIcon />
+              {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent class="w-auto p-0" align="start">
+            <Calendar
+              v-model="date"
+              :default-placeholder="defaultPlaceholder"
+              layout="month-and-year"
+              initial-focus
+              @update:model-value="close"
+            />
+          </PopoverContent>
+        </Popover>
+        <Popover v-slot="{ close }">
+          <PopoverTrigger as-child>
+            <Button
+              variant="outline"
+              :class="
+                cn(
+                  'w-40 justify-start text-left font-normal rounded ms-2',
+                  !toDate && 'text-muted-foreground',
+                )
+              "
+            >
+              <CalendarIcon />
+              {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent class="w-auto p-0" align="start">
+            <Calendar
+              v-model="toDate"
+              :default-placeholder="defaultPlaceholder"
+              layout="month-and-year"
+              initial-focus
+              @update:model-value="close"
+            />
+          </PopoverContent>
+        </Popover>
+        <Button variant="outline" class="ms-2"> Filter </Button>
+      </div>
     </div>
 
     <Table>
