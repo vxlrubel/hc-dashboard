@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
+import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
 import {
   Table,
   TableBody,
@@ -17,7 +18,8 @@ import ActivityPagination from './ActivityPagination.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import { ukFormat } from '@/utils/dateFormat.js'
+import { ukFormat } from '@/utils/dateFormat'
+import { getStatus } from '@/utils/status'
 import { useActivitiesStore } from '@/stores/activity'
 const activityStore = useActivitiesStore()
 
@@ -31,13 +33,16 @@ if (pageParam) {
   activityStore.page = 1
 }
 
-watch(() => activityStore.page, (newPage) => {
-  if (newPage > 1) {
-    router.replace({ query: { page: String(newPage) } })
-  } else {
-    router.replace({ query: {} })
-  }
-})
+watch(
+  () => activityStore.page,
+  (newPage) => {
+    if (newPage > 1) {
+      router.replace({ query: { page: String(newPage) } })
+    } else {
+      router.replace({ query: {} })
+    }
+  },
+)
 
 const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs(activityStore)
 </script>
@@ -50,6 +55,9 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
         >Add New Activity</RouterLink
       >
     </PageTitle>
+
+    <PrimaryButton label="Apply" />
+
     <Table>
       <TableHeader>
         <TableRow>
@@ -59,9 +67,9 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
               <Label for="checkAll">All</Label>
             </div>
           </TableHead>
-          <TableHead>Title</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead> Status </TableHead>
+          <TableHead class="min-w-60 w-60">Title</TableHead>
+          <TableHead class="min-w-70">Description</TableHead>
+          <TableHead class="min-w-35 w-35"> Status </TableHead>
           <TableHead class="w-35"> Created at </TableHead>
           <TableHead class="w-35"> Updated at </TableHead>
         </TableRow>
@@ -76,7 +84,9 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
           </TableCell>
           <TableCell>{{ title }}</TableCell>
           <TableCell>{{ description }}</TableCell>
-          <TableCell> {{ status }} </TableCell>
+          <TableCell>
+            <span v-html="getStatus(status)"></span>
+          </TableCell>
           <TableCell>
             <span v-html="ukFormat(created_at)"></span>
           </TableCell>
@@ -85,6 +95,10 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
       </TableBody>
     </Table>
 
-    <ActivityPagination v-model:page="page" :total="totalActivities" :items-per-page="itemsPerPage" />
+    <ActivityPagination
+      v-model:page="page"
+      :total="totalActivities"
+      :items-per-page="itemsPerPage"
+    />
   </div>
 </template>

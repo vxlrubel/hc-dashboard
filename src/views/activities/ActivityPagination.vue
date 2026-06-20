@@ -18,6 +18,7 @@ const page = defineModel<number>('page', { default: 1 })
 
 <template>
   <Pagination
+    class="mt-5 justify-end"
     v-slot="{ page: currentPage }"
     v-model:page="page"
     :items-per-page="itemsPerPage ?? 10"
