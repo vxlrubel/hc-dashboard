@@ -14,6 +14,16 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectGroup,
+  SelectLabel,
+  SelectValue,
+} from '@/components/ui/select'
+
 import ActivityPagination from './ActivityPagination.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
@@ -56,7 +66,26 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
       >
     </PageTitle>
 
-    <PrimaryButton label="Apply" />
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <Select>
+          <SelectTrigger class="w-40">
+            <SelectValue placeholder="Select bulk action" />
+          </SelectTrigger>
+          <SelectContent class="w-40">
+            <SelectGroup>
+              <SelectLabel>Actions</SelectLabel>
+              <SelectItem value="edit"> Edit </SelectItem>
+              <SelectItem value="trash"> Move to trash </SelectItem>
+              <SelectItem value="delete"> Delete </SelectItem>
+              <SelectItem value="restore"> Restore </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <PrimaryButton label="Apply" />
+      </div>
+      <div></div>
+    </div>
 
     <Table>
       <TableHeader>
