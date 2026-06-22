@@ -129,13 +129,13 @@ async function onApply() {
                 <CalendarIcon />
                 {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
 
-                <span
-                  v-if="date"
-                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                  @click.stop="date = ''"
-                >
-                  <X />
-                </span>
+              <span
+                v-if="date"
+                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                @click.stop="date = undefined"
+              >
+                <X />
+              </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent class="w-auto p-0" align="start">
@@ -163,13 +163,13 @@ async function onApply() {
               >
                 <CalendarIcon />
                 {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
-                <span
-                  v-if="toDate"
-                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                  @click.stop="toDate = ''"
-                >
-                  <X />
-                </span>
+              <span
+                v-if="toDate"
+                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                @click.stop="toDate = undefined"
+              >
+                <X />
+              </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent class="w-auto p-0" align="start">
