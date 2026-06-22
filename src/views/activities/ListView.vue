@@ -70,7 +70,8 @@ watch(
   },
 )
 
-const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs(activityStore)
+const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } =
+  storeToRefs(activityStore)
 </script>
 
 <template>
@@ -98,7 +99,17 @@ const { paginatedActivities, page, itemsPerPage, totalActivities } = storeToRefs
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button variant="outline"> Apply <Loader class="animate-spin" /></Button>
+        <Button
+          :disabled="buikLoading"
+          variant="outline"
+          @click.prevent="activityStore.handleBuilAction"
+          class="w-18.75"
+        >
+          <template v-if="buikLoading">
+            <Loader class="animate-spin" />
+          </template>
+          <template v-else>Apply</template>
+        </Button>
       </div>
       <div class="flex items-center">
         <Popover v-slot="{ close }">
