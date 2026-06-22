@@ -49,7 +49,7 @@ export const useActivitiesStore = defineStore('activity', () => {
       setTimeout(() => {
         buikLoading.value = false
 
-        show({ title: 'Success', description: 'Bulk action successful', status: 'error' })
+        show({ title: 'Success', description: 'Bulk action successfulBulk', status: 'error' })
 
         resolve()
       }, 500)

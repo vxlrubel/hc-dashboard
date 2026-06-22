@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useSuccessDialog } from '@/composables/useSuccessDialog'
 import { Button } from '@/components/ui/button'
-import { CircleCheck } from '@lucide/vue'
+import { CircleCheck, TriangleAlert, CircleAlert } from '@lucide/vue'
 
-const { isOpen, title, description, hide } = useSuccessDialog()
+const { isOpen, title, description, hide, status } = useSuccessDialog()
 </script>
 
 <template>
@@ -15,19 +15,24 @@ const { isOpen, title, description, hide } = useSuccessDialog()
       >
         <div class="fixed inset-0 bg-black/50" @click="hide" />
         <div
-          class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg border scale-zoomin-up"
+          class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg scale-zoomin-up border border-t-7"
+          :class="{
+            'border-t-green-600': status == 'success',
+            'border-t-rose-600': status == 'error',
+            'border-t-amber-600': status == 'warning',
+          }"
         >
           <div class="flex gap-4">
-            <div class="9">
-              <CircleCheck class="size-9 text-green-600" />
-            </div>
+            <CircleCheck class="size-9 text-green-600" v-if="status == 'success'" />
+            <TriangleAlert class="size-9 text-rose-600" v-if="status == 'error'" />
+            <CircleAlert class="size-9 text-amber-600" v-if="status == 'warning'" />
             <div class="flex-1">
               <h3 class="text-lg font-semibold text-foreground leading-[normal]">
                 {{ title }}
               </h3>
-              <p class="mt-2 text-sm text-muted-foreground">
+              <div class="mt-2 text-sm text-muted-foreground max-h-50 overflow-y-auto pr-6 -mr-6">
                 {{ description }}
-              </p>
+              </div>
             </div>
           </div>
           <div class="mt-4 flex justify-end">

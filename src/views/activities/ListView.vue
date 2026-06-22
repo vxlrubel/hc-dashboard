@@ -182,9 +182,12 @@ async function onApply() {
     </div>
 
     <div class="relative">
-      <!-- <div class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]">
+      <div
+        class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]"
+        v-if="buikLoading"
+      >
         <Loader class="animate-spin" />
-      </div> -->
+      </div>
       <Table>
         <TableHeader>
           <TableRow>
