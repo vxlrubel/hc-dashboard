@@ -88,22 +88,24 @@ async function onApply() {
       >
     </PageTitle>
 
-    <div class="flex items-center gap-4 mb-2">
-      <div class="flex items-center gap-2">
-        <Select>
-          <SelectTrigger class="w-40">
-            <SelectValue placeholder="Bulk action" />
-          </SelectTrigger>
-          <SelectContent class="w-40">
-            <SelectGroup>
-              <SelectLabel>Actions</SelectLabel>
-              <SelectItem value="edit"> Edit </SelectItem>
-              <SelectItem value="trash"> Move to trash </SelectItem>
-              <SelectItem value="delete"> Delete </SelectItem>
-              <SelectItem value="restore"> Restore </SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+    <div class="flex flex-col items-start md:flex-row md:items-center gap-4 mb-2">
+      <div class="flex items-center gap-2 w-full md:w-62">
+        <div class="flex-1">
+          <Select>
+            <SelectTrigger class="w-full">
+              <SelectValue placeholder="Bulk action" />
+            </SelectTrigger>
+            <SelectContent class="w-full">
+              <SelectGroup>
+                <SelectLabel>Actions</SelectLabel>
+                <SelectItem value="edit"> Edit </SelectItem>
+                <SelectItem value="trash"> Move to trash </SelectItem>
+                <SelectItem value="delete"> Delete </SelectItem>
+                <SelectItem value="restore"> Restore </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
         <Button :disabled="buikLoading" variant="outline" @click.prevent="onApply" class="w-18.75">
           <template v-if="buikLoading">
             <Loader class="animate-spin" />
@@ -111,73 +113,77 @@ async function onApply() {
           <template v-else>Apply</template>
         </Button>
       </div>
-      <div class="flex items-center">
-        <Popover v-slot="{ close }">
-          <PopoverTrigger as-child>
-            <Button
-              variant="outline"
-              :class="
-                cn(
-                  'w-40 justify-start text-left font-normal rounded relative',
-                  !date && 'text-muted-foreground',
-                )
-              "
-            >
-              <CalendarIcon />
-              {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
+      <div class="flex justify-between flex-wrap w-full md:w-100 md:flex-nowrap gap-2">
+        <div class="w-[48%]">
+          <Popover v-slot="{ close }">
+            <PopoverTrigger as-child>
+              <Button
+                variant="outline"
+                :class="
+                  cn(
+                    'w-full justify-start text-left font-normal rounded relative',
+                    !date && 'text-muted-foreground',
+                  )
+                "
+              >
+                <CalendarIcon />
+                {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
 
-              <span
-                v-if="date"
-                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                @click.stop="date = ''"
+                <span
+                  v-if="date"
+                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                  @click.stop="date = ''"
+                >
+                  <X />
+                </span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent class="w-auto p-0" align="start">
+              <Calendar
+                v-model="date"
+                :default-placeholder="defaultPlaceholder"
+                layout="month-and-year"
+                initial-focus
+                @update:model-value="close"
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
+        <div class="w-[48%]">
+          <Popover v-slot="{ close }">
+            <PopoverTrigger as-child>
+              <Button
+                variant="outline"
+                :class="
+                  cn(
+                    'w-full justify-start text-left font-normal rounded relative',
+                    !toDate && 'text-muted-foreground',
+                  )
+                "
               >
-                <X />
-              </span>
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent class="w-auto p-0" align="start">
-            <Calendar
-              v-model="date"
-              :default-placeholder="defaultPlaceholder"
-              layout="month-and-year"
-              initial-focus
-              @update:model-value="close"
-            />
-          </PopoverContent>
-        </Popover>
-        <Popover v-slot="{ close }">
-          <PopoverTrigger as-child>
-            <Button
-              variant="outline"
-              :class="
-                cn(
-                  'w-40 justify-start text-left font-normal rounded ms-2 relative',
-                  !toDate && 'text-muted-foreground',
-                )
-              "
-            >
-              <CalendarIcon />
-              {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
-              <span
-                v-if="toDate"
-                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                @click.stop="toDate = ''"
-              >
-                <X />
-              </span>
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent class="w-auto p-0" align="start">
-            <Calendar
-              v-model="toDate"
-              :default-placeholder="defaultPlaceholder"
-              layout="month-and-year"
-              initial-focus
-              @update:model-value="close"
-            />
-          </PopoverContent>
-        </Popover>
-        <Button variant="outline" class="ms-2"> Filter </Button>
+                <CalendarIcon />
+                {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
+                <span
+                  v-if="toDate"
+                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                  @click.stop="toDate = ''"
+                >
+                  <X />
+                </span>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent class="w-auto p-0" align="start">
+              <Calendar
+                v-model="toDate"
+                :default-placeholder="defaultPlaceholder"
+                layout="month-and-year"
+                initial-focus
+                @update:model-value="close"
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
+        <Button variant="outline"> Filter </Button>
       </div>
     </div>
 
