@@ -32,6 +32,7 @@ import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 import ActivityPagination from './ActivityPagination.vue'
+import SuccessDialog from '@/components/SuccessDialog.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -72,6 +73,10 @@ watch(
 
 const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } =
   storeToRefs(activityStore)
+
+async function onApply() {
+  await activityStore.handleBuilAction()
+}
 </script>
 
 <template>
@@ -99,12 +104,7 @@ const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } 
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button
-          :disabled="buikLoading"
-          variant="outline"
-          @click.prevent="activityStore.handleBuilAction"
-          class="w-18.75"
-        >
+        <Button :disabled="buikLoading" variant="outline" @click.prevent="onApply" class="w-18.75">
           <template v-if="buikLoading">
             <Loader class="animate-spin" />
           </template>
@@ -182,9 +182,9 @@ const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } 
     </div>
 
     <div class="relative">
-      <div class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]">
+      <!-- <div class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]">
         <Loader class="animate-spin" />
-      </div>
+      </div> -->
       <Table>
         <TableHeader>
           <TableRow>
@@ -235,5 +235,6 @@ const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } 
         :items-per-page="itemsPerPage"
       />
     </div>
+    <SuccessDialog />
   </div>
 </template>

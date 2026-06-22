@@ -1,9 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref, computed, onMounted } from 'vue'
 
+import { useSuccessDialog } from '@/composables/useSuccessDialog'
+
 export const useActivitiesStore = defineStore('activity', () => {
   const statuses = ['completed', 'in_progress', 'pending']
 
+  const { show } = useSuccessDialog()
   interface Activity {
     id: number
     title: string
@@ -42,9 +45,15 @@ export const useActivitiesStore = defineStore('activity', () => {
   const handleBuilAction = () => {
     buikLoading.value = true
 
-    setTimeout(() => {
-      buikLoading.value = false
-    }, 1500)
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        buikLoading.value = false
+
+        show({ title: 'Success', description: 'Bulk action successful', status: 'error' })
+
+        resolve()
+      }, 500)
+    })
   }
 
   return { paginatedActivities, itemsPerPage, page, totalActivities, buikLoading, handleBuilAction }
