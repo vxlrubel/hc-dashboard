@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSuccessDialog } from '@/composables/useSuccessDialog'
 import { Button } from '@/components/ui/button'
+import { CircleCheck } from '@lucide/vue'
 
 const { isOpen, title, description, hide } = useSuccessDialog()
 </script>
@@ -16,12 +17,19 @@ const { isOpen, title, description, hide } = useSuccessDialog()
         <div
           class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg border scale-zoomin-up"
         >
-          <h3 class="text-lg font-semibold text-foreground">
-            {{ title }}
-          </h3>
-          <p class="mt-2 text-sm text-muted-foreground">
-            {{ description }}
-          </p>
+          <div class="flex gap-4">
+            <div class="9">
+              <CircleCheck class="size-9 text-green-600" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-foreground leading-[normal]">
+                {{ title }}
+              </h3>
+              <p class="mt-2 text-sm text-muted-foreground">
+                {{ description }}
+              </p>
+            </div>
+          </div>
           <div class="mt-4 flex justify-end">
             <Button @click="hide"> Okay </Button>
           </div>
