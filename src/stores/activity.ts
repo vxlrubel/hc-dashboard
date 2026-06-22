@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref, computed, onMounted } from 'vue'
-
-import { useSuccessDialog } from '@/composables/useSuccessDialog'
+import { useToastDialog } from '@/composables/useToastDialog'
 
 export const useActivitiesStore = defineStore('activity', () => {
+  const { show } = useToastDialog()
   const statuses = ['completed', 'in_progress', 'pending']
-
-  const { show } = useSuccessDialog()
   interface Activity {
     id: number
     title: string

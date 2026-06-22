@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useSuccessDialog } from '@/composables/useSuccessDialog'
+import { useToastDialog } from '@/composables/useToastDialog'
 import { Button } from '@/components/ui/button'
 import { CircleCheck, TriangleAlert, CircleAlert } from '@lucide/vue'
 
-const { isOpen, title, description, hide, status } = useSuccessDialog()
+const { isOpen, title, description, hide, status } = useToastDialog()
 </script>
 
 <template>

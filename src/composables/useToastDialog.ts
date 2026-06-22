@@ -5,7 +5,7 @@ const title = ref('')
 const description = ref('')
 const status = ref('success')
 
-export function useSuccessDialog() {
+export function useToastDialog() {
   function show(opts: { title: string; description: string; status: string }) {
     title.value = opts.title
     description.value = opts.description

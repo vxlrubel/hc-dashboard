@@ -32,7 +32,7 @@ import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 import ActivityPagination from './ActivityPagination.vue'
-import SuccessDialog from '@/components/SuccessDialog.vue'
+import ToastDialog from '@/components/ToastDialog.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -238,6 +238,6 @@ async function onApply() {
         :items-per-page="itemsPerPage"
       />
     </div>
-    <SuccessDialog />
+    <ToastDialog />
   </div>
 </template>
