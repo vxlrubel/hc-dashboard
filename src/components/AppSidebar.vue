@@ -2,8 +2,10 @@
 import { reactive } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { Button } from '@/components/ui/button'
+import { useAuthStore } from '@/stores/auth'
 
 const route = useRoute()
+const auth = useAuthStore()
 
 const openStates = reactive<Record<string, boolean>>({})
 
@@ -542,19 +544,19 @@ import {
             <DropdownMenuTrigger as-child>
               <SidebarMenuButton size="lg" tooltip="Account">
                 <Avatar class="size-8 rounded-lg">
-                  <AvatarFallback class="rounded-lg">HC</AvatarFallback>
+                  <AvatarFallback class="rounded-lg">{{ auth.user?.name?.charAt(0) ?? 'U' }}</AvatarFallback>
                 </Avatar>
                 <div class="grid flex-1 text-left text-sm leading-tight">
-                  <span class="truncate font-semibold">Admin</span>
-                  <span class="truncate text-xs">admin@hc.com</span>
+                  <span class="truncate font-semibold">{{ auth.user?.name ?? 'User' }}</span>
+                  <span class="truncate text-xs">{{ auth.user?.email ?? '' }}</span>
                 </div>
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" class="w-56" align="start">
               <DropdownMenuLabel class="font-normal">
                 <div class="flex flex-col gap-1">
-                  <p class="font-medium text-sm">Admin</p>
-                  <p class="text-muted-foreground text-xs">admin@hc.com</p>
+                  <p class="font-medium text-sm">{{ auth.user?.name ?? 'User' }}</p>
+                  <p class="text-muted-foreground text-xs">{{ auth.user?.email ?? '' }}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -573,7 +575,7 @@ import {
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem @click="auth.logout">
                 <LogOut class="mr-2" />
                 Log out
               </DropdownMenuItem>
