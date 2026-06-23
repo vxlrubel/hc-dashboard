@@ -42,7 +42,7 @@
       "label": "Administrator",
       "permissions": {
         "dashboard": ["view"],
-        "activities": ["create", "read", "update", "delete", "restore", "forceDelete"],
+        "activities": ["list", "create", "read", "update", "delete", "restore", "forceDelete"],
         "clients": ["create", "read", "update", "delete"],
         "employees": ["create", "read", "update", "delete"],
         "forms": ["create", "read", "update", "delete"],
