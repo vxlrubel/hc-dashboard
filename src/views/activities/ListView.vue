@@ -33,6 +33,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 
 import ActivityPagination from './ActivityPagination.vue'
 import ToastDialog from '@/components/ToastDialog.vue'
+import SpinnerOverlay from '@/components/SpinnerOverlay.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -188,12 +189,7 @@ async function onApply() {
     </div>
 
     <div class="relative">
-      <div
-        class="absolute inset-0 flex items-center justify-center z-30 backdrop-blur-[3px]"
-        v-if="buikLoading"
-      >
-        <Loader class="animate-spin" />
-      </div>
+      <SpinnerOverlay />
       <Table>
         <TableHeader>
           <TableRow>
