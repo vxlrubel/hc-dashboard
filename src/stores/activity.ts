@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref, computed, onMounted } from 'vue'
 import { useToastDialog } from '@/composables/useToastDialog'
+import { useSpinner } from '@/composables/useSpinner'
+import API from '@/services/api'
+import ENDPOINTS from '@/constants/endpoints'
 
 export const useActivitiesStore = defineStore('activity', () => {
-  const { show } = useToastDialog()
-  const statuses = ['completed', 'in_progress', 'pending']
+  const { show: showToast } = useToastDialog()
+  const { show: showSpinner, hide: hideSpinner } = useSpinner()
   interface Activity {
     id: number
     title: string
@@ -12,21 +15,17 @@ export const useActivitiesStore = defineStore('activity', () => {
     status: string
     created_at: string
     updated_at: string
+    deleted_at: string
   }
 
   const activities = ref<Activity[]>([])
 
   onMounted(async () => {
-    const generatedActivities = Array.from({ length: 50 }, (_, index) => ({
-      id: index + 1,
-      title: `Activity ${index + 1}`,
-      description: `Description for activity ${index + 1}.`,
-      status: statuses[index % statuses.length],
-      created_at: new Date(2026, 5, index + 1, 9, 0, 0).toISOString(),
-      updated_at: new Date(2026, 5, index + 1, 10, 30, 0).toISOString(),
-    }))
+    const { data } = await API.get(ENDPOINTS.activities.list)
 
-    activities.value = generatedActivities
+    activities.value = data
+
+    console.log('data', data)
   })
 
   const itemsPerPage = ref(10)
@@ -42,12 +41,18 @@ export const useActivitiesStore = defineStore('activity', () => {
 
   const handleBuilAction = () => {
     buikLoading.value = true
+    showSpinner()
 
     return new Promise<void>((resolve) => {
       setTimeout(() => {
+        hideSpinner()
         buikLoading.value = false
 
-        show({ title: 'Success', description: 'Bulk action successfulBulk', status: 'success' })
+        showToast({
+          title: 'Success',
+          description: 'Bulk action successfulBulk',
+          status: 'success',
+        })
 
         resolve()
       }, 500)
