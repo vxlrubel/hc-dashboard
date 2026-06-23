@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, RouterLink } from 'vue-router'
 import { Button } from '@/components/ui/button'
 import ModeToggle from '@/components/ModeToggle.vue'
 import NavigationMenuGuest from '@/components/header/NavigationMenuGuest.vue'
 import { GalleryVerticalEnd } from '@lucide/vue'
+import { useAuthStore } from '@/stores/auth'
+
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -28,6 +31,19 @@ import { GalleryVerticalEnd } from '@lucide/vue'
         </div>
       </div>
       <div class="px-4 flex items-center gap-2">
+        <template v-if="!auth.isAuthenticated">
+          <Button variant="ghost" as-child>
+            <RouterLink to="/login">Login</RouterLink>
+          </Button>
+          <Button as-child>
+            <RouterLink to="/register">Register</RouterLink>
+          </Button>
+        </template>
+        <template v-else>
+          <Button variant="outline" as-child>
+            <RouterLink to="/dashboard">Dashboard</RouterLink>
+          </Button>
+        </template>
         <ModeToggle />
       </div>
     </header>
