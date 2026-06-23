@@ -11,10 +11,36 @@ type Schema = {
 }
 
 type Endpoints = {
+  auth: {
+    login: string
+    register: string
+  }
+  users: Schema
+  roles: {
+    list: string
+    single: (role: string) => string
+  }
   activities: Schema
 }
 
 export const ENDPOINTS: Endpoints = {
+  auth: {
+    login: '/login',
+    register: '/register',
+  },
+  users: {
+    list: '/users',
+    create: '/users',
+    single: (id: Id) => `/users/${id}`,
+    update: (id: Id) => `/users/${id}`,
+    delete: (id: Id) => `/users/${id}`,
+    restore: (id: Id) => `/users/${id}/restore`,
+    forceDelete: (id: Id) => `/users/${id}/force`,
+  },
+  roles: {
+    list: '/roles',
+    single: (role: string) => `/roles/${role}`,
+  },
   activities: {
     list: '/activities',
     create: '/activities',
