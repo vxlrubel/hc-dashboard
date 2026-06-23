@@ -1,4 +1,105 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@hc.com",
+      "password": "password123",
+      "role": "admin",
+      "avatar": null,
+      "created_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Manager User",
+      "email": "manager@hc.com",
+      "password": "password123",
+      "role": "manager",
+      "avatar": null,
+      "created_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Editor User",
+      "email": "editor@hc.com",
+      "password": "password123",
+      "role": "editor",
+      "avatar": null,
+      "created_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Viewer User",
+      "email": "viewer@hc.com",
+      "password": "password123",
+      "role": "viewer",
+      "avatar": null,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "roles": {
+    "admin": {
+      "label": "Administrator",
+      "permissions": {
+        "dashboard": ["view"],
+        "activities": ["create", "read", "update", "delete", "restore", "forceDelete"],
+        "clients": ["create", "read", "update", "delete"],
+        "employees": ["create", "read", "update", "delete"],
+        "forms": ["create", "read", "update", "delete"],
+        "funders": ["create", "read", "update", "delete"],
+        "invoices": ["create", "read", "update", "delete"],
+        "leave": ["create", "read", "update", "delete"],
+        "rate-sheets": ["create", "read", "update", "delete"],
+        "rotas": ["create", "read", "update", "delete"],
+        "schedules": ["create", "read", "update", "delete"],
+        "users": ["create", "read", "update", "delete"]
+      }
+    },
+    "manager": {
+      "label": "Manager",
+      "permissions": {
+        "dashboard": ["view"],
+        "activities": ["create", "read", "update", "delete"],
+        "clients": ["create", "read", "update", "delete"],
+        "employees": ["create", "read", "update", "delete"],
+        "forms": ["read", "update"],
+        "funders": ["read"],
+        "invoices": ["read", "update"],
+        "leave": ["read", "update"],
+        "rate-sheets": ["read"],
+        "rotas": ["read"],
+        "schedules": ["read"]
+      }
+    },
+    "editor": {
+      "label": "Editor",
+      "permissions": {
+        "dashboard": ["view"],
+        "activities": ["create", "read", "update"],
+        "clients": ["create", "read", "update"],
+        "employees": ["read"],
+        "forms": ["create", "read", "update"],
+        "invoices": ["read"],
+        "leave": ["create", "read"]
+      }
+    },
+    "viewer": {
+      "label": "Viewer",
+      "permissions": {
+        "dashboard": ["view"],
+        "activities": ["read"],
+        "clients": ["read"],
+        "employees": ["read"],
+        "forms": ["read"],
+        "funders": ["read"],
+        "invoices": ["read"],
+        "leave": ["read"],
+        "rate-sheets": ["read"],
+        "rotas": ["read"],
+        "schedules": ["read"]
+      }
+    }
+  },
   "activities": [
     {
       "id": 1,
@@ -67,7 +168,7 @@
       "id": 8,
       "title": "Authentication Setup",
       "description": "Implemented user authentication flow.",
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-08T09:00:00Z",
       "updated_at": "2026-01-08T10:00:00Z",
       "deleted_at": null
@@ -76,7 +177,7 @@
       "id": 9,
       "title": "Role Management",
       "description": "Created user role permissions.",
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-09T09:00:00Z",
       "updated_at": "2026-01-09T10:00:00Z",
       "deleted_at": null
@@ -103,7 +204,7 @@
       "id": 12,
       "title": "Notification System",
       "description": "Built in-app notification feature.",
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-12T09:00:00Z",
       "updated_at": "2026-01-12T10:00:00Z",
       "deleted_at": null
