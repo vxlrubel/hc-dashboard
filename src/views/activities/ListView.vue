@@ -34,8 +34,6 @@ import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 import ActivityPagination from './ActivityPagination.vue'
-import ToastDialog from '@/components/ToastDialog.vue'
-import SpinnerOverlay from '@/components/SpinnerOverlay.vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -80,7 +78,6 @@ const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } 
 async function onApply() {
   await activityStore.handleBuilAction()
 }
-
 </script>
 
 <template>
@@ -192,7 +189,6 @@ async function onApply() {
     </div>
 
     <div class="relative">
-      <SpinnerOverlay />
       <Table>
         <TableHeader>
           <TableRow>
@@ -247,6 +243,5 @@ async function onApply() {
         :items-per-page="itemsPerPage"
       />
     </div>
-    <ToastDialog />
   </div>
 </template>
