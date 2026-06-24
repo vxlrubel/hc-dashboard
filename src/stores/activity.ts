@@ -25,10 +25,7 @@ export const useActivitiesStore = defineStore('activity', () => {
 
   onMounted(async () => {
     const { data } = await API.get(ENDPOINTS.activities.list)
-
     activities.value = data
-
-    console.log('data', data)
   })
 
   const itemsPerPage = ref(10)
