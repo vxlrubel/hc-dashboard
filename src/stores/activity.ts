@@ -65,9 +65,6 @@ export const useActivitiesStore = defineStore('activity', () => {
   const createLoading = ref(false)
 
   const createActivity = async (payload: { title: string; description: string }) => {
-
-    await router.push('/dashboard/activities')
-
     try {
       createLoading.value = true
 
