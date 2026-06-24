@@ -23,6 +23,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
+import ActivityAction from './ActivityAction.vue'
+
 import type { DateValue } from '@internationalized/date'
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
 import { CalendarIcon, X, Loader } from '@lucide/vue'
@@ -78,6 +80,7 @@ const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } 
 async function onApply() {
   await activityStore.handleBuilAction()
 }
+
 </script>
 
 <template>
@@ -130,13 +133,13 @@ async function onApply() {
                 <CalendarIcon />
                 {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Start date' }}
 
-              <span
-                v-if="date"
-                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                @click.stop="date = undefined"
-              >
-                <X />
-              </span>
+                <span
+                  v-if="date"
+                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                  @click.stop="date = undefined"
+                >
+                  <X />
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent class="w-auto p-0" align="start">
@@ -164,13 +167,13 @@ async function onApply() {
               >
                 <CalendarIcon />
                 {{ toDate ? df.format(toDate.toDate(getLocalTimeZone())) : 'End date' }}
-              <span
-                v-if="toDate"
-                class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
-                @click.stop="toDate = undefined"
-              >
-                <X />
-              </span>
+                <span
+                  v-if="toDate"
+                  class="absolute top-0 bottom-0 right-0 inline-flex items-center px-2"
+                  @click.stop="toDate = undefined"
+                >
+                  <X />
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent class="w-auto p-0" align="start">
@@ -199,6 +202,7 @@ async function onApply() {
                 <Label for="checkAll">All</Label>
               </div>
             </TableHead>
+            <TableHead class="min-w-15 w-15">Action</TableHead>
             <TableHead class="min-w-60 w-60">Title</TableHead>
             <TableHead class="min-w-70">Description</TableHead>
             <TableHead class="min-w-35 w-35"> Status </TableHead>
@@ -220,6 +224,9 @@ async function onApply() {
           >
             <TableCell class="font-medium">
               <Checkbox />
+            </TableCell>
+            <TableCell>
+              <ActivityAction :id="id" />
             </TableCell>
             <TableCell>{{ title }}</TableCell>
             <TableCell>{{ description }}</TableCell>
