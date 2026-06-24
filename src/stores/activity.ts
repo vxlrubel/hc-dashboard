@@ -32,9 +32,13 @@ export const useActivitiesStore = defineStore('activity', () => {
   const page = ref(1)
   const totalActivities = computed(() => activities.value.length)
 
+  const sortedActivities = computed(() => {
+    return [...activities.value].reverse()
+  })
+
   const paginatedActivities = computed(() => {
     const start = (page.value - 1) * itemsPerPage.value
-    return activities.value.slice(start, start + itemsPerPage.value)
+    return sortedActivities.value.slice(start, start + itemsPerPage.value)
   })
 
   const buikLoading = ref(false)
@@ -74,6 +78,7 @@ export const useActivitiesStore = defineStore('activity', () => {
       })
 
       if (data) {
+        activities.value.push(data)
         await router.push('/dashboard/activities')
       }
 
