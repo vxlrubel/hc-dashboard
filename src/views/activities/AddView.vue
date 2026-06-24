@@ -40,7 +40,7 @@ const handleSubmit = async () => {
         >All Activities</RouterLink
       >
     </PageTitle>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <Card class="w-full max-w-md mx-auto mt-10">
         <CardHeader>
           <CardTitle>New Acitivity</CardTitle>
@@ -64,12 +64,7 @@ const handleSubmit = async () => {
           </div>
         </CardContent>
         <CardFooter class="flex items-center gap-4">
-          <Button
-            @click.prevent="handleSubmit"
-            variant="outline"
-            type="button"
-            :disabled="createLoading"
-          >
+          <Button variant="outline" type="submit" :disabled="createLoading">
             Create Activty
           </Button>
           <Loader class="size-5 animate-spin" v-if="createLoading" />
