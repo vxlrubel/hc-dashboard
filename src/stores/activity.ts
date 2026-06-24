@@ -4,6 +4,7 @@ import { useToastDialog } from '@/composables/useToastDialog'
 import { useSpinner } from '@/composables/useSpinner'
 import API from '@/services/api'
 import ENDPOINTS from '@/constants/endpoints'
+import { useRouter } from 'vue-router'
 
 export const useActivitiesStore = defineStore('activity', () => {
   const { show: showToast } = useToastDialog()
@@ -17,6 +18,8 @@ export const useActivitiesStore = defineStore('activity', () => {
     updated_at: string
     deleted_at: string
   }
+
+  const router = useRouter()
 
   const activities = ref<Activity[]>([])
 
@@ -59,5 +62,44 @@ export const useActivitiesStore = defineStore('activity', () => {
     })
   }
 
-  return { paginatedActivities, itemsPerPage, page, totalActivities, buikLoading, handleBuilAction }
+  const createLoading = ref(false)
+
+  const createActivity = async (payload: { title: string; description: string }) => {
+
+    await router.push('/dashboard/activities')
+
+    try {
+      createLoading.value = true
+
+      const { data } = await API.post(ENDPOINTS.activities.create, {
+        ...payload,
+        status: 'in_progress',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        deleted_at: null,
+      })
+
+      if (data) {
+        await router.push('/dashboard/activities')
+      }
+
+      return data
+    } catch (error) {
+      console.warn('Create Activity Warning:', error)
+      throw error
+    } finally {
+      createLoading.value = false
+    }
+  }
+
+  return {
+    paginatedActivities,
+    itemsPerPage,
+    page,
+    totalActivities,
+    buikLoading,
+    handleBuilAction,
+    createLoading,
+    createActivity,
+  }
 })
