@@ -91,6 +91,104 @@ export const useActivitiesStore = defineStore('activity', () => {
     }
   }
 
+  const fetchActivityLoading = ref(false)
+
+  const getAcivity = async (id) => {
+    fetchActivityLoading.value = true
+
+    try {
+      const { data } = await API.get(ENDPOINTS.activities.single(id))
+
+      if (data) {
+        return data
+      }
+    } catch (error) {
+      console.warn('Activity fetching error: ', error)
+    } finally {
+      fetchActivityLoading.value = false
+    }
+  }
+
+  const deleteLoading = ref(false)
+  const deletingIds = ref<Record<string | number, boolean>>({})
+
+  const deleteActivity = async (id: string | number) => {
+    deleteLoading.value = true
+
+    try {
+      await API.delete(ENDPOINTS.activities.delete(id))
+
+      deletingIds.value = { ...deletingIds.value, [id]: true }
+
+      await new Promise((resolve) => setTimeout(resolve, 300))
+
+      activities.value = activities.value.filter((a) => a.id !== id)
+
+      deleteLoading.value = false
+
+      await new Promise((resolve) => setTimeout(resolve, 500))
+
+      deletingIds.value = { ...deletingIds.value, [id]: false }
+
+      showToast({
+        title: 'Success',
+        description: 'Activity moved to trash successfully.',
+        status: 'success',
+      })
+    } catch (error) {
+      deleteLoading.value = false
+      deletingIds.value = { ...deletingIds.value, [id]: false }
+      console.warn('Delete Activity Warning:', error)
+      showToast({
+        title: 'Error',
+        description: 'Failed to delete activity.',
+        status: 'error',
+      })
+      throw error
+    }
+  }
+
+  const updateLoading = ref(false)
+
+  const updateActivity = async (
+    id: string | number,
+    payload: { title: string; description: string; status: string },
+  ) => {
+    try {
+      updateLoading.value = true
+
+      const { data } = await API.patch(ENDPOINTS.activities.update(id), {
+        ...payload,
+        updated_at: new Date().toISOString(),
+      })
+
+      if (data) {
+        const index = activities.value.findIndex((a) => a.id === data.id)
+        if (index !== -1) {
+          activities.value[index] = data
+        }
+        showToast({
+          title: 'Success',
+          description: 'Activity updated successfully.',
+          status: 'success',
+        })
+        await router.push('/dashboard/activities')
+      }
+
+      return data
+    } catch (error) {
+      console.warn('Update Activity Warning:', error)
+      showToast({
+        title: 'Error',
+        description: 'Failed to update activity.',
+        status: 'error',
+      })
+      throw error
+    } finally {
+      updateLoading.value = false
+    }
+  }
+
   return {
     paginatedActivities,
     itemsPerPage,
@@ -100,5 +198,12 @@ export const useActivitiesStore = defineStore('activity', () => {
     handleBuilAction,
     createLoading,
     createActivity,
+    fetchActivityLoading,
+    getAcivity,
+    updateLoading,
+    updateActivity,
+    deleteLoading,
+    deleteActivity,
+    deletingIds,
   }
 })
