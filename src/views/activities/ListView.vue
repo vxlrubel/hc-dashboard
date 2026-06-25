@@ -6,7 +6,6 @@ import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
 import {
   Table,
-  TableBody,
   TableCell,
   TableHead,
   TableHeader,
@@ -72,7 +71,7 @@ watch(
   },
 )
 
-const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading } =
+const { paginatedActivities, page, itemsPerPage, totalActivities, buikLoading, deletingIds } =
   storeToRefs(activityStore)
 
 async function onApply() {
@@ -206,7 +205,7 @@ async function onApply() {
             <TableHead class="w-35"> Updated at </TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TransitionGroup tag="tbody" name="row">
           <TableRow
             v-for="{
               id,
@@ -217,6 +216,7 @@ async function onApply() {
               updated_at,
             } in paginatedActivities"
             :key="id"
+            :class="deletingIds[id] ? 'bg-red-100 dark:bg-red-950/30' : ''"
           >
             <TableCell class="font-medium">
               <Checkbox />
@@ -234,7 +234,7 @@ async function onApply() {
             </TableCell>
             <TableCell> <span v-html="ukFormat(updated_at)"></span> </TableCell>
           </TableRow>
-        </TableBody>
+        </TransitionGroup>
       </Table>
 
       <ActivityPagination
@@ -245,3 +245,13 @@ async function onApply() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.row-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.row-leave-to {
+  opacity: 0;
+}
+</style>
