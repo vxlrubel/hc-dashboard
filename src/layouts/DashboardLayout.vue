@@ -6,6 +6,7 @@ import AppSidebar from '@/components/AppSidebar.vue'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import SpinnerOverlay from '@/components/SpinnerOverlay.vue'
 import ToastDialog from '@/components/ToastDialog.vue'
+import ConfirmDialog from '@/components/ConfirmDialog.vue'
 </script>
 
 <template>
@@ -28,6 +29,9 @@ import ToastDialog from '@/components/ToastDialog.vue'
 
               <!-- global tast notice -->
               <ToastDialog />
+
+              <!-- global confirm dialog -->
+              <ConfirmDialog />
 
               <!-- Global composible component end here -->
             </div>
