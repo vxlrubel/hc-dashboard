@@ -10,16 +10,33 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
+import { useRouter } from 'vue-router'
+import { useActivitiesStore } from '@/stores/activity'
+import { useConfirmDialog } from '@/composables/useConfirmDialog'
+
 defineProps<{
   id: number | string
 }>()
 
+const router = useRouter()
+const store = useActivitiesStore()
+const { confirm } = useConfirmDialog()
+
 const handEditAction = (id) => {
-  alert('Edit id is : ' + id)
+  const url = `/dashboard/activity/edit/${id}`
+  router.push(url)
 }
-const handDeleteAction = (id) => {
-  alert('Delete id is : ' + id)
+
+const handDeleteAction = async (id) => {
+  const confirmed = await confirm('Are you sure you want to move this activity to trash?', {
+    confirmLabel: 'Delete',
+    cancelLabel: 'Cancel',
+  })
+  if (confirmed) {
+    await store.deleteActivity(id)
+  }
 }
+
 const handAsignAction = (id) => {
   alert('Asign id is : ' + id)
 }
