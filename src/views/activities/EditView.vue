@@ -143,14 +143,14 @@ const onSubmit = form.handleSubmit(async (formValues) => {
               </FormItem>
             </FormField>
             <FormField v-slot="{ field }" name="status">
-              <FormItem>
-                <FormLabel>Status</FormLabel>
+              <FormItem class="flex gap-4">
+                <FormLabel class="min-w-20">Status</FormLabel>
                 <FormControl>
                   <Select :model-value="field.value" @update:model-value="field.onChange">
-                    <SelectTrigger>
+                    <SelectTrigger class="min-w-40">
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent class="min-w-40">
                       <SelectItem value="pending">Pending</SelectItem>
                       <SelectItem value="in_progress">In Progress</SelectItem>
                       <SelectItem value="completed">Completed</SelectItem>
