@@ -108,9 +108,9 @@ const onSubmit = form.handleSubmit(async (formValues) => {
 <template>
   <div>
     <PageTitle title="Edit Activity" subtitle="You may update the activity from here.">
-      <RouterLink to="/dashboard/activities" class="button-primary-outline"
-        >All Activities</RouterLink
-      >
+      <RouterLink to="/dashboard/activities">
+        <Button class="button-primary-outline">All Activities</Button>
+      </RouterLink>
     </PageTitle>
     <form @submit="onSubmit">
       <Card class="w-full max-w-md mx-auto mt-10">

@@ -4,13 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink } from 'vue-router'
-import {
-  Table,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+import { Table, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 import {
   Select,
@@ -83,9 +77,9 @@ async function onApply() {
   <div>
     <PageTitle title="Activity List" subtitle="View and manage all activities.">
       <!-- You can add action buttons or filters here using the default slot -->
-      <RouterLink to="/dashboard/activity/add" class="button-primary-outline"
-        >Add New Activity</RouterLink
-      >
+      <RouterLink to="/dashboard/activity/add">
+        <Button class="button-primary-outline">Add New Activity</Button>
+      </RouterLink>
     </PageTitle>
 
     <div class="flex flex-col items-start md:flex-row md:items-center gap-4 mb-2">
