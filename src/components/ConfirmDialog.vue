@@ -8,10 +8,13 @@ const { isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel } = useC
 <template>
   <Teleport to="body">
     <Transition name="fade">
-      <div v-if="isOpen" class="fixed inset-0 z-50 flex pt-15 justify-center backdrop-blur-[2px]">
+      <div
+        v-if="isOpen"
+        class="fixed inset-0 z-50 flex pt-12.5 justify-center items-start backdrop-blur-[2px]"
+      >
         <div class="fixed inset-0 bg-black/50" />
         <div
-          class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg scale-zoomin-up"
+          class="relative z-10 mx-4 w-full max-w-md rounded border bg-background p-6 shadow-lg scale-zoomin-up"
         >
           <h3 class="text-lg font-semibold text-foreground">Confirm</h3>
           <div class="mt-2 text-sm text-muted-foreground">
