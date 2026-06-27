@@ -2,7 +2,8 @@
 import { useConfirmDialog } from '@/composables/useConfirmDialog'
 import { Button } from '@/components/ui/button'
 
-const { isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel } = useConfirmDialog()
+const { dropScaling, isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel, onBackdrop } =
+  useConfirmDialog()
 </script>
 
 <template>
@@ -11,8 +12,9 @@ const { isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel } = useC
       <div
         v-if="isOpen"
         class="fixed inset-0 z-50 flex pt-12.5 justify-center items-start backdrop-blur-[2px]"
+        :class="{ 'scalling-down-zoom': dropScaling }"
       >
-        <div class="fixed inset-0 bg-black/50" />
+        <div @click="onBackdrop" class="fixed inset-0 bg-black/50" />
         <div
           class="relative z-10 mx-4 w-full max-w-md rounded border bg-background p-6 shadow-lg scale-zoomin-up"
         >
@@ -21,8 +23,8 @@ const { isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel } = useC
             {{ message }}
           </div>
           <div class="mt-6 flex items-center justify-end gap-3">
-            <Button variant="outline" @click="onCancel">{{ cancelLabel }}</Button>
-            <Button @click="onConfirm">{{ confirmLabel }}</Button>
+            <Button class="button-cancel min-w-17.5" @click="onCancel">{{ cancelLabel }}</Button>
+            <Button @click="onConfirm" class="button-primary min-w-17.5">{{ confirmLabel }}</Button>
           </div>
         </div>
       </div>
@@ -60,6 +62,43 @@ const { isOpen, message, confirmLabel, cancelLabel, onConfirm, onCancel } = useC
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+.scalling-down-zoom {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+
+  15% {
+    transform: translateX(-6px) scale(1.01);
+  }
+
+  30% {
+    transform: translateX(6px) scale(1.02);
+  }
+
+  45% {
+    transform: translateX(-4px) scale(1.015);
+  }
+
+  60% {
+    transform: translateX(4px) scale(1.01);
+  }
+
+  75% {
+    transform: translateX(-2px) scale(1.005);
+  }
+
+  90% {
+    transform: translateX(2px) scale(1.002);
   }
 }
 </style>

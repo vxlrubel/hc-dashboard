@@ -29,8 +29,8 @@ const handEditAction = (id) => {
 
 const handDeleteAction = async (id) => {
   const confirmed = await confirm('Are you sure you want to move this activity to trash?', {
-    confirmLabel: 'Delete',
-    cancelLabel: 'Cancel',
+    confirmLabel: 'Yes, move',
+    cancelLabel: 'No',
   })
   if (confirmed) {
     await store.deleteActivity(id)
