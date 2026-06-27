@@ -12,19 +12,22 @@ const { dropScaling, isOpen, message, confirmLabel, cancelLabel, onConfirm, onCa
       <div
         v-if="isOpen"
         class="fixed inset-0 z-50 flex pt-12.5 justify-center items-start backdrop-blur-[2px]"
-        :class="{ 'scalling-down-zoom': dropScaling }"
       >
         <div @click="onBackdrop" class="fixed inset-0 bg-black/50" />
-        <div
-          class="relative z-10 mx-4 w-full max-w-md rounded border bg-background p-6 shadow-lg scale-zoomin-up"
-        >
-          <h3 class="text-lg font-semibold text-foreground">Confirm</h3>
-          <div class="mt-2 text-sm text-muted-foreground">
-            {{ message }}
-          </div>
-          <div class="mt-6 flex items-center justify-end gap-3">
-            <Button class="button-cancel min-w-17.5" @click="onCancel">{{ cancelLabel }}</Button>
-            <Button @click="onConfirm" class="button-primary min-w-17.5">{{ confirmLabel }}</Button>
+        <div class="p-6" :class="{ 'scalling-down-zoom': dropScaling }">
+          <div
+            class="relative z-10 mx-4 w-full max-w-md rounded border bg-background shadow-lg scale-zoomin-up p-6"
+          >
+            <h3 class="text-lg font-semibold text-foreground">Confirm</h3>
+            <div class="mt-2 text-sm text-muted-foreground">
+              {{ message }}
+            </div>
+            <div class="mt-6 flex items-center justify-end gap-3">
+              <Button class="button-cancel min-w-17.5" @click="onCancel">{{ cancelLabel }}</Button>
+              <Button @click="onConfirm" class="button-primary min-w-17.5">{{
+                confirmLabel
+              }}</Button>
+            </div>
           </div>
         </div>
       </div>
@@ -74,31 +77,23 @@ const { dropScaling, isOpen, message, confirmLabel, cancelLabel, onConfirm, onCa
 @keyframes shake {
   0%,
   100% {
-    transform: translateX(0) scale(1);
+    transform: translateX(0);
   }
 
-  15% {
-    transform: translateX(-6px) scale(1.01);
+  20% {
+    transform: translateX(-5px);
   }
 
-  30% {
-    transform: translateX(6px) scale(1.02);
-  }
-
-  45% {
-    transform: translateX(-4px) scale(1.015);
+  40% {
+    transform: translateX(5px);
   }
 
   60% {
-    transform: translateX(4px) scale(1.01);
+    transform: translateX(-3px);
   }
 
-  75% {
-    transform: translateX(-2px) scale(1.005);
-  }
-
-  90% {
-    transform: translateX(2px) scale(1.002);
+  80% {
+    transform: translateX(3px);
   }
 }
 </style>
