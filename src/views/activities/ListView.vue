@@ -193,8 +193,8 @@ async function onApply() {
             </TableHead>
             <TableHead class="min-w-15 w-15">Action</TableHead>
             <TableHead class="min-w-60 w-60">Title</TableHead>
-            <TableHead class="min-w-70">Description</TableHead>
-            <TableHead class="min-w-35 w-35"> Status </TableHead>
+            <TableHead class="min-w-70 max-w-100">Description</TableHead>
+            <TableHead class="min-w-35"> Status </TableHead>
             <TableHead class="w-35"> Created at </TableHead>
             <TableHead class="w-35"> Updated at </TableHead>
           </TableRow>
@@ -219,7 +219,12 @@ async function onApply() {
               <ActivityAction :id="id" />
             </TableCell>
             <TableCell>{{ title }}</TableCell>
-            <TableCell>{{ description }}</TableCell>
+            <TableCell
+              class="min-w-70 max-w-100 overflow-hidden text-ellipsis"
+              :title="description"
+            >
+              {{ description }}
+            </TableCell>
             <TableCell>
               <span v-html="getStatus(status)"></span>
             </TableCell>
