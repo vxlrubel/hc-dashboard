@@ -11,12 +11,12 @@ const { dropScaling, isOpen, message, confirmLabel, cancelLabel, onConfirm, onCa
     <Transition name="fade">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex pt-12.5 justify-center items-start backdrop-blur-[2px]"
+        class="fixed inset-0 z-50 flex justify-center items-start backdrop-blur-[2px]"
       >
         <div @click="onBackdrop" class="fixed inset-0 bg-black/50" />
         <div class="p-6" :class="{ 'scalling-down-zoom': dropScaling }">
           <div
-            class="relative z-10 mx-4 w-full max-w-md rounded border bg-background shadow-lg scale-zoomin-up p-6"
+            class="relative z-10 mx-4 w-full max-w-md rounded border bg-background shadow-lg scale-zoomin-up p-6 dark:bg-[#1F1F1F]"
           >
             <h3 class="text-lg font-semibold text-foreground">Confirm</h3>
             <div class="mt-2 text-sm text-muted-foreground">
