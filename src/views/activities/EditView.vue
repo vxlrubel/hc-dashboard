@@ -164,7 +164,7 @@ const onSubmit = form.handleSubmit(async (formValues) => {
           </div>
         </CardContent>
         <CardFooter class="flex items-center gap-4">
-          <Button variant="outline" type="submit" :disabled="updateLoading">
+          <Button class="button-primary" type="submit" :disabled="updateLoading">
             Update Activity
           </Button>
           <Loader class="size-5 animate-spin" v-if="updateLoading" />

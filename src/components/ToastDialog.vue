@@ -11,11 +11,11 @@ const { isOpen, title, description, hide, status } = useToastDialog()
     <Transition name="fade">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-start pt-12.5 justify-center backdrop-blur-[2px]"
+        class="fixed inset-0 z-50 flex items-start pt-5 justify-center backdrop-blur-[2px]"
       >
         <div class="fixed inset-0 bg-black/50" @click="hide" />
         <div
-          class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg scale-zoomin-up border border-t-7"
+          class="relative z-10 mx-4 w-full max-w-md rounded bg-background p-6 shadow-lg scale-zoomin-up border border-t-7 dark:bg-[#1F1F1F]"
           :class="{
             'border-t-green-600': status == 'success',
             'border-t-rose-600': status == 'error',
