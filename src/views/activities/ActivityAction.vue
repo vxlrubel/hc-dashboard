@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Ellipsis, PencilSparkles, Trash2, UserRoundArrowLeft } from '@lucide/vue'
+import { Ellipsis, PencilSparkles, Trash2, UserRoundArrowLeft, Eye } from '@lucide/vue'
+
+import ActionText from '@/constants/action-text'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,6 +39,11 @@ const handDeleteAction = async (id) => {
   }
 }
 
+const handViewAction = (id) => {
+  const url = `/dashboard/activity/show/${id}`
+  router.push(url)
+}
+
 const handAsignAction = (id) => {
   alert('Asign id is : ' + id)
 }
@@ -44,7 +51,7 @@ const handAsignAction = (id) => {
 
 <template>
   <DropdownMenu>
-    <DropdownMenuTrigger class="w-full flex justify-center">
+    <DropdownMenuTrigger class="w-full flex justify-center" @click.stop.prevent>
       <Ellipsis />
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-45 rounded">
@@ -53,19 +60,25 @@ const handAsignAction = (id) => {
       <DropdownMenuSeparator />
 
       <DropdownMenuItem class="cursor-pointer" @click.prevent="handEditAction(id)">
-        Edit
+        {{ ActionText.edit }}
         <DropdownMenuShortcut>
           <PencilSparkles />
         </DropdownMenuShortcut>
       </DropdownMenuItem>
+      <DropdownMenuItem class="cursor-pointer" @click.prevent="handViewAction(id)">
+        {{ ActionText.view }}
+        <DropdownMenuShortcut>
+          <Eye />
+        </DropdownMenuShortcut>
+      </DropdownMenuItem>
       <DropdownMenuItem class="cursor-pointer" @click.prevent="handDeleteAction(id)">
-        Delete
+        {{ ActionText.trash }}
         <DropdownMenuShortcut>
           <Trash2 />
         </DropdownMenuShortcut>
       </DropdownMenuItem>
       <DropdownMenuItem class="cursor-pointer" @click.prevent="handAsignAction(id)">
-        Asign
+        {{ ActionText.assign }}
         <DropdownMenuShortcut>
           <UserRoundArrowLeft />
         </DropdownMenuShortcut>
