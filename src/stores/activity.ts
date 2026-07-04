@@ -167,11 +167,15 @@ export const useActivitiesStore = defineStore('activity', () => {
         if (index !== -1) {
           activities.value[index] = data
         }
-        showToast({
-          title: 'Success',
-          description: 'Activity updated successfully.',
-          status: 'success',
-        })
+
+        setTimeout(() => {
+          showToast({
+            title: 'Success',
+            description: 'Activity updated successfully.',
+            status: 'success',
+          })
+        }, 500)
+
         await router.push('/dashboard/activities')
       }
 
