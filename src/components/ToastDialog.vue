@@ -36,7 +36,7 @@ const { isOpen, title, description, hide, status } = useToastDialog()
             </div>
           </div>
           <div class="mt-4 flex justify-end">
-            <Button @click="hide"> Okay </Button>
+            <Button @click="hide" class="button-primary"> Okay </Button>
           </div>
         </div>
       </div>
