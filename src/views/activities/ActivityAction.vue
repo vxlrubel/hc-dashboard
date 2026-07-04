@@ -51,7 +51,7 @@ const handAsignAction = (id) => {
 
 <template>
   <DropdownMenu>
-    <DropdownMenuTrigger class="w-full flex justify-center" @click.stop.prevent>
+    <DropdownMenuTrigger class="w-full flex justify-center">
       <Ellipsis />
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-45 rounded">
