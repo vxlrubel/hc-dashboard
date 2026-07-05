@@ -48,7 +48,7 @@ async function exportPDF() {
       canvas.height = 23
       const ctx = canvas.getContext('2d')!
       ctx.drawImage(img, 0, 0, 26, 23)
-      doc.addImage(canvas.toDataURL('image/png'), 'PNG', 180, 10, 26, 23)
+      doc.addImage(canvas.toDataURL('image/png'), 'PNG', 170, 14, 26, 23)
       resolve()
     }
     img.src = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgLogo)))}`
