@@ -3,10 +3,12 @@ import { onMounted, ref } from 'vue'
 import PageTitle from '@/components/PageTitle.vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useInvoicesStore } from '@/stores/invoice'
-import { Loader, Pencil, ArrowLeft } from '@lucide/vue'
+import { Loader, Pencil, ArrowLeft, FileText } from '@lucide/vue'
 import { Button } from '@/components/ui/button'
 import { ukFormat } from '@/utils/dateFormat'
 import { getStatus } from '@/utils/status'
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -28,6 +30,42 @@ const invoice = ref<{
 } | null>(null)
 
 const loading = ref(true)
+const pdfLoading = ref(false)
+
+function exportPDF() {
+  if (!invoice.value) return
+
+  pdfLoading.value = true
+  const doc = new jsPDF()
+
+  doc.setFontSize(18)
+  doc.text(`Invoice ${invoice.value.invoiceNumber}`, 14, 22)
+
+  doc.setFontSize(10)
+  doc.text(`Generated: ${new Date().toLocaleDateString('en-GB')}`, 14, 30)
+
+  autoTable(doc, {
+    startY: 38,
+    head: [['Field', 'Value']],
+    body: [
+      ['Invoice Number', invoice.value.invoiceNumber],
+      ['Client ID', invoice.value.clientId],
+      ['Amount', `£${invoice.value.amount}`],
+      ['Description', invoice.value.description],
+      ['Status', invoice.value.status.replace('_', ' ')],
+      ['Due Date', invoice.value.dueDate],
+      ['Paid At', invoice.value.paidAt ?? 'Not paid'],
+      ['Created At', ukFormat(invoice.value.created_at)],
+      ['Updated At', ukFormat(invoice.value.updated_at)],
+    ],
+    theme: 'grid',
+    headStyles: { fillColor: [59, 130, 246] },
+    styles: { fontSize: 10 },
+  })
+
+  doc.save(`invoice-${invoice.value.invoiceNumber}.pdf`)
+  pdfLoading.value = false
+}
 
 onMounted(async () => {
   const result = await invoiceStore.fetchInvoice(invoiceId)
@@ -93,6 +131,10 @@ onMounted(async () => {
                 Edit
               </Button>
             </RouterLink>
+            <Button class="button-primary-outline" size="sm" :disabled="pdfLoading" @click="exportPDF">
+              <FileText class="size-4 mr-1" />
+              Export PDF
+            </Button>
             <RouterLink to="/dashboard/invoices">
               <Button class="button-primary-outline" size="sm">
                 <ArrowLeft class="size-4 mr-1" />
