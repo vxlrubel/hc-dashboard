@@ -1,20 +1,31 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import PageTitle from '@/components/PageTitle.vue'
+
+import { storeToRefs } from 'pinia'
+import { RouterLink } from 'vue-router'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { z } from 'zod'
+import { computed } from 'vue'
 import { parseDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
-import { CalendarIcon } from '@lucide/vue'
+import { CalendarIcon, Loader } from '@lucide/vue'
 import { cn } from '@/lib/utils'
-import PageTitle from '@/components/PageTitle.vue'
-import { RouterLink } from 'vue-router'
-
 import { Button } from '@/components/ui/button'
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Calendar } from '@/components/ui/calendar'
+import { useEmployeesStore } from '@/stores/employee'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 const formSchema = toTypedSchema(
   z.object({
@@ -78,139 +89,160 @@ const selectedDate = computed({
 const df = new DateFormatter('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 const defaultPlaceholder = today(getLocalTimeZone())
 
-const onSubmit = form.handleSubmit((values) => {
-  console.log('Form submitted!', values)
+const employeeStore = useEmployeesStore()
+const { createLoading } = storeToRefs(employeeStore)
+
+const onSubmit = form.handleSubmit(async (values) => {
+  await employeeStore.createEmployee({
+    firstName: values.firstName,
+    lastName: values.lastName,
+    username: values.username,
+    email: values.email,
+    address: values.address,
+    phone: values.phone,
+    bio: values.bio,
+    dob: values.dob,
+  })
 })
 </script>
 
 <template>
   <div>
     <PageTitle title="Add Employee" subtitle="Create a new employee record.">
-      <RouterLink to="/dashboard/employees" class="button-primary-outline"
-        >All Employees</RouterLink
-      >
+      <RouterLink to="/dashboard/employees">
+        <Button class="button-primary-outline">All Employees</Button>
+      </RouterLink>
     </PageTitle>
-    <div class="mt-6 max-w-3xl mx-auto">
-      <form @submit="onSubmit" class="flex flex-col gap-6">
-        <FormField v-slot="{ componentField }" name="firstName">
-          <FormItem>
-            <FormLabel>First Name</FormLabel>
-            <FormControl>
-              <Input placeholder="John" class="rounded-0" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+    <form @submit="onSubmit">
+      <Card class="w-full max-w-2xl mx-auto mt-10">
+        <CardHeader>
+          <CardTitle>New Employee</CardTitle>
+          <CardDescription>Create a new employee record with valid input.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div class="grid w-full items-center gap-5">
+            <div class="grid grid-cols-2 gap-4">
+              <FormField v-slot="{ componentField }" name="firstName">
+                <FormItem>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John" v-bind="componentField" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              </FormField>
 
-        <FormField v-slot="{ componentField }" name="lastName">
-          <FormItem>
-            <FormLabel>Last Name</FormLabel>
-            <FormControl>
-              <Input placeholder="Doe" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+              <FormField v-slot="{ componentField }" name="lastName">
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Doe" v-bind="componentField" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              </FormField>
+            </div>
 
-        <FormField v-slot="{ componentField }" name="username">
-          <FormItem>
-            <FormLabel>Username</FormLabel>
-            <FormControl>
-              <Input placeholder="johndoe" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+            <FormField v-slot="{ componentField }" name="username">
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="johndoe" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-        <FormField v-slot="{ componentField }" name="email">
-          <FormItem>
-            <FormLabel>Email Address</FormLabel>
-            <FormControl>
-              <Input type="email" placeholder="john@example.com" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+            <FormField v-slot="{ componentField }" name="email">
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="john@example.com" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-        <FormField v-slot="{ componentField }" name="address">
-          <FormItem>
-            <FormLabel>Address</FormLabel>
-            <FormControl>
-              <Input placeholder="123 Main St, City" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+            <FormField v-slot="{ componentField }" name="address">
+              <FormItem>
+                <FormLabel>Address</FormLabel>
+                <FormControl>
+                  <Input placeholder="123 Main St, City" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-        <FormField v-slot="{ componentField }" name="phone">
-          <FormItem>
-            <FormLabel>Phone</FormLabel>
-            <FormControl>
-              <Input type="tel" placeholder="+1 (555) 000-0000" v-bind="componentField" />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+            <FormField v-slot="{ componentField }" name="phone">
+              <FormItem>
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="+1 (555) 000-0000" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-        <FormField v-slot="{ componentField }" name="bio">
-          <FormItem>
-            <FormLabel>Bio</FormLabel>
-            <FormControl>
-              <Textarea
-                placeholder="Tell us about yourself..."
-                class="min-h-[100px]"
-                v-bind="componentField"
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
-
-        <FormField v-slot="{ componentField }" name="dob">
-          <FormItem>
-            <FormLabel>Date of Birth</FormLabel>
-            <FormControl>
-              <Popover v-slot="{ close }">
-                <PopoverTrigger as-child>
-                  <Button
-                    variant="outline"
-                    :class="
-                      cn(
-                        'w-full justify-start text-left font-normal',
-                        !form.values.dob && 'text-muted-foreground',
-                      )
-                    "
-                  >
-                    <CalendarIcon class="mr-2 size-4" />
-                    {{
-                      form.values.dob
-                        ? df.format(parseDate(form.values.dob).toDate(getLocalTimeZone()))
-                        : 'Pick a date'
-                    }}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent class="w-auto p-0" align="start">
-                  <Calendar
-                    v-model="selectedDate"
-                    :default-placeholder="defaultPlaceholder"
-                    :max-value="today(getLocalTimeZone())"
-                    layout="month-and-year"
-                    initial-focus
-                    @update:model-value="close"
+            <FormField v-slot="{ componentField }" name="bio">
+              <FormItem>
+                <FormLabel>Bio</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Tell us about yourself..."
+                    class="min-h-[100px]"
+                    v-bind="componentField"
                   />
-                </PopoverContent>
-              </Popover>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
 
-        <div class="flex gap-4">
-          <Button type="submit"> Save </Button>
-          <Button type="button" variant="outline"> Cancel </Button>
-        </div>
-      </form>
-    </div>
+            <FormField v-slot="{ componentField }" name="dob">
+              <FormItem>
+                <FormLabel>Date of Birth</FormLabel>
+                <FormControl>
+                  <Popover v-slot="{ close }">
+                    <PopoverTrigger as-child>
+                      <Button
+                        variant="outline"
+                        :class="
+                          cn(
+                            'w-full justify-start text-left font-normal',
+                            !form.values.dob && 'text-muted-foreground',
+                          )
+                        "
+                      >
+                        <CalendarIcon class="mr-2 size-4" />
+                        {{
+                          form.values.dob
+                            ? df.format(parseDate(form.values.dob).toDate(getLocalTimeZone()))
+                            : 'Pick a date'
+                        }}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent class="w-auto p-0" align="start">
+                      <Calendar
+                        v-model="selectedDate"
+                        :default-placeholder="defaultPlaceholder"
+                        :max-value="today(getLocalTimeZone())"
+                        layout="month-and-year"
+                        initial-focus
+                        @update:model-value="close"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </FormField>
+          </div>
+        </CardContent>
+        <CardFooter class="flex items-center gap-4">
+          <Button variant="outline" type="submit" :disabled="createLoading"> Save </Button>
+          <Loader class="size-5 animate-spin" v-if="createLoading" />
+        </CardFooter>
+      </Card>
+    </form>
   </div>
 </template>
 
