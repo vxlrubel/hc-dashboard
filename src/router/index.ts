@@ -283,6 +283,29 @@ const router = createRouter({
           component: () => import('@/views/leave/DetailView.vue'),
         },
         {
+          path: 'users',
+          name: 'users',
+          meta: { permission: ['users', 'list'] },
+          component: () => import('@/views/users/ListView.vue'),
+        },
+        {
+          path: 'user/add',
+          name: 'user-add',
+          meta: { permission: ['users', 'create'] },
+          component: () => import('@/views/users/AddView.vue'),
+        },
+        {
+          path: 'user/edit/:id',
+          name: 'user-edit',
+          meta: { permission: ['users', 'update'] },
+          component: () => import('@/views/users/EditView.vue'),
+        },
+        {
+          path: 'user/show/:id',
+          name: 'user-show',
+          component: () => import('@/views/users/DetailView.vue'),
+        },
+        {
           path: ':pathMatch(.*)*',
           component: () => import('@/views/NotFoundView.vue'),
         },
