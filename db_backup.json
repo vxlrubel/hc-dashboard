@@ -43,16 +43,16 @@
       "permissions": {
         "dashboard": ["view"],
         "activities": ["list", "create", "read", "update", "delete", "restore", "forceDelete"],
-        "clients": ["create", "read", "update", "delete"],
-        "employees": ["create", "read", "update", "delete"],
-        "forms": ["create", "read", "update", "delete"],
-        "funders": ["create", "read", "update", "delete"],
-        "invoices": ["create", "read", "update", "delete"],
-        "leave": ["create", "read", "update", "delete"],
-        "rate-sheets": ["create", "read", "update", "delete"],
-        "rotas": ["create", "read", "update", "delete"],
-        "schedules": ["create", "read", "update", "delete"],
-        "users": ["create", "read", "update", "delete"]
+        "clients": ["list", "create", "read", "update", "delete", "restore", "forceDelete"],
+        "employees": ["list", "create", "read", "update", "delete", "restore", "forceDelete"],
+        "forms": ["list", "create", "read", "update", "delete"],
+        "funders": ["list", "create", "read", "update", "delete", "restore", "forceDelete"],
+        "invoices": ["list", "create", "read", "update", "delete"],
+        "leave": ["list", "create", "read", "update", "delete"],
+        "rate-sheets": ["list", "create", "read", "update", "delete"],
+        "rotas": ["list", "create", "read", "update", "delete"],
+        "schedules": ["list", "create", "read", "update", "delete"],
+        "users": ["list", "create", "read", "update", "delete"]
       }
     },
     "manager": {
@@ -156,15 +156,6 @@
       "deleted_at": null
     },
     {
-      "id": "7",
-      "title": "API Planning",
-      "description": "Defined REST API endpoints.",
-      "status": "completed",
-      "created_at": "2026-01-07T09:00:00Z",
-      "updated_at": "2026-01-07T10:00:00Z",
-      "deleted_at": null
-    },
-    {
       "id": "8",
       "title": "Authentication Setup",
       "description": "Implemented user authentication flow.",
@@ -177,27 +168,9 @@
       "id": "9",
       "title": "Role Management",
       "description": "Created user role permissions.",
-      "status": "completed",
+      "status": "in_progress",
       "created_at": "2026-01-09T09:00:00Z",
-      "updated_at": "2026-01-09T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "10",
-      "title": "Dashboard Development",
-      "description": "Developed the admin dashboard.",
-      "status": "completed",
-      "created_at": "2026-01-10T09:00:00Z",
-      "updated_at": "2026-01-10T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "11",
-      "title": "Profile Module",
-      "description": "Implemented user profile management.",
-      "status": "completed",
-      "created_at": "2026-01-11T09:00:00Z",
-      "updated_at": "2026-01-11T10:00:00Z",
+      "updated_at": "2026-07-04T21:25:02.310Z",
       "deleted_at": null
     },
     {
@@ -210,85 +183,193 @@
       "deleted_at": null
     },
     {
-      "id": "13",
-      "title": "Email Templates",
-      "description": "Created transactional email templates.",
+      "title": "Rem fuga Non ex sed",
+      "description": "Iusto illo cum et ob",
       "status": "completed",
-      "created_at": "2026-01-13T09:00:00Z",
-      "updated_at": "2026-01-13T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "14",
-      "title": "Task Management",
-      "description": "Implemented task assignment feature.",
-      "status": "pending",
-      "created_at": "2026-01-14T09:00:00Z",
-      "updated_at": "2026-01-14T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "15",
-      "title": "File Upload",
-      "description": "Added document upload support.",
-      "status": "completed",
-      "created_at": "2026-01-15T09:00:00Z",
-      "updated_at": "2026-01-15T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "16",
-      "title": "Search Feature",
-      "description": "Implemented global search functionality.",
-      "status": "completed",
-      "created_at": "2026-01-16T09:00:00Z",
-      "updated_at": "2026-01-16T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "17",
-      "title": "Pagination",
-      "description": "Added server-side pagination.",
-      "status": "completed",
-      "created_at": "2026-01-17T09:00:00Z",
-      "updated_at": "2026-01-17T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "18",
-      "title": "Activity Logs",
-      "description": "Tracked user activities.",
-      "status": "in_progress",
-      "created_at": "2026-01-18T09:00:00Z",
-      "updated_at": "2026-01-18T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "19",
-      "title": "Report Generation",
-      "description": "Generated exportable reports.",
-      "status": "pending",
-      "created_at": "2026-01-19T09:00:00Z",
-      "updated_at": "2026-01-19T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "id": "20",
-      "title": "Analytics Integration",
-      "description": "Integrated analytics dashboard.",
-      "status": "completed",
-      "created_at": "2026-01-20T09:00:00Z",
-      "updated_at": "2026-01-20T10:00:00Z",
-      "deleted_at": null
-    },
-    {
-      "title": "This is the new activity",
-      "description": "This is the activity description",
-      "status": "in_progress",
-      "created_at": "2026-06-24T20:25:21.793Z",
-      "updated_at": "2026-06-24T20:25:21.793Z",
+      "created_at": "2026-07-04T22:15:04.684Z",
+      "updated_at": "2026-07-05T20:09:50.234Z",
       "deleted_at": null,
-      "id": "R3nW181tPSg"
+      "id": "tSJ6smOJo4c"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "johndoe",
+      "email": "john@hc.com",
+      "address": "123 Main St, London, UK",
+      "phone": "+44 20 7123 4567",
+      "bio": "Senior software engineer with 10 years of experience in full-stack development.",
+      "dob": "1990-03-15",
+      "status": "completed",
+      "created_at": "2026-01-10T09:00:00Z",
+      "updated_at": "2026-01-10T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "username": "janesmith",
+      "email": "jane@hc.com",
+      "address": "456 Oak Ave, Manchester, UK",
+      "phone": "+44 20 7123 4568",
+      "bio": "UX designer passionate about creating intuitive user experiences.",
+      "dob": "1992-07-22",
+      "status": "completed",
+      "created_at": "2026-01-11T09:00:00Z",
+      "updated_at": "2026-01-11T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3",
+      "firstName": "Robert",
+      "lastName": "Johnson",
+      "username": "robertj",
+      "email": "robert@hc.com",
+      "address": "789 Pine Rd, Birmingham, UK",
+      "phone": "+44 20 7123 4569",
+      "bio": "DevOps engineer managing cloud infrastructure and CI/CD pipelines.",
+      "dob": "1988-11-08",
+      "status": "in_progress",
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-02-01T10:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4",
+      "firstName": "Emily",
+      "lastName": "Davis",
+      "username": "emilyd",
+      "email": "emily@hc.com",
+      "address": "321 Elm St, Leeds, UK",
+      "phone": "+44 20 7123 4570",
+      "bio": "Product manager with a focus on healthcare technology solutions.",
+      "dob": "1991-05-30",
+      "status": "pending",
+      "created_at": "2026-01-15T09:00:00Z",
+      "updated_at": "2026-01-15T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "5",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "username": "michaelb",
+      "email": "michael@hc.com",
+      "address": "654 Maple Dr, Liverpool, UK",
+      "phone": "+44 20 7123 4571",
+      "bio": "Data analyst specializing in healthcare data and reporting.",
+      "dob": "1993-09-14",
+      "status": "completed",
+      "created_at": "2026-01-18T09:00:00Z",
+      "updated_at": "2026-01-18T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "firstName": "Penelope",
+      "lastName": "Britt",
+      "username": "wogoro",
+      "email": "finobi@mailinator.com",
+      "address": "Omnis magni nulla ar",
+      "phone": "+1 (333) 919-4042",
+      "bio": "Ipsum officia et cul",
+      "dob": "2026-07-06",
+      "status": "in_progress",
+      "created_at": "2026-07-05T20:34:12.319Z",
+      "updated_at": "2026-07-05T20:34:12.319Z",
+      "deleted_at": null,
+      "id": "LJO23Rw4p18"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "name": "NHS Trust London",
+      "email": "contact@nhstrustlondon.nhs.uk",
+      "phone": "+44 20 7946 0123",
+      "company": "NHS Trust London",
+      "status": "completed",
+      "created_at": "2026-01-05T09:00:00Z",
+      "updated_at": "2026-01-05T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2",
+      "name": "CareTech Solutions Ltd",
+      "email": "info@caretechsolutions.co.uk",
+      "phone": "+44 20 7946 0124",
+      "company": "CareTech Solutions Ltd",
+      "status": "completed",
+      "created_at": "2026-01-08T09:00:00Z",
+      "updated_at": "2026-01-08T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3",
+      "name": "Bright Care Home",
+      "email": "admin@brightcarehome.co.uk",
+      "phone": "+44 20 7946 0125",
+      "company": "Bright Care Home",
+      "status": "in_progress",
+      "created_at": "2026-01-14T09:00:00Z",
+      "updated_at": "2026-02-10T14:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4",
+      "name": "HomeFirst Healthcare",
+      "email": "hello@homefirsthealthcare.co.uk",
+      "phone": "+44 20 7946 0126",
+      "company": "HomeFirst Healthcare",
+      "status": "pending",
+      "created_at": "2026-02-01T09:00:00Z",
+      "updated_at": "2026-02-01T09:00:00Z",
+      "deleted_at": null
+    }
+  ],
+  "funders": [
+    {
+      "id": "1",
+      "name": "Department of Health",
+      "email": "funding@health.gov.uk",
+      "phone": "+44 20 7210 3000",
+      "status": "completed",
+      "created_at": "2026-01-02T09:00:00Z",
+      "updated_at": "2026-01-02T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "2",
+      "name": "Big Lottery Fund",
+      "email": "applications@biglotteryfund.org.uk",
+      "phone": "+44 20 7946 0130",
+      "status": "completed",
+      "created_at": "2026-01-06T09:00:00Z",
+      "updated_at": "2026-01-06T09:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "3",
+      "name": "Social Care Grant Council",
+      "email": "grants@scgcouncil.gov.uk",
+      "phone": "+44 20 7946 0131",
+      "status": "in_progress",
+      "created_at": "2026-01-20T09:00:00Z",
+      "updated_at": "2026-02-15T11:00:00Z",
+      "deleted_at": null
+    },
+    {
+      "id": "4",
+      "name": "Wellcome Trust",
+      "email": "funding@wellcome.org",
+      "phone": "+44 20 7611 8888",
+      "status": "pending",
+      "created_at": "2026-02-05T09:00:00Z",
+      "updated_at": "2026-02-05T09:00:00Z",
+      "deleted_at": null
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
