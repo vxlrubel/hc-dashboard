@@ -54,9 +54,9 @@ function exportPDF() {
       ['Description', invoice.value.description],
       ['Status', invoice.value.status.replace('_', ' ')],
       ['Due Date', invoice.value.dueDate],
-      ['Paid At', invoice.value.paidAt ?? 'Not paid'],
-      ['Created At', ukFormat(invoice.value.created_at)],
-      ['Updated At', ukFormat(invoice.value.updated_at)],
+      ['Paid At', invoice.value.paidAt ? ukFormat(invoice.value.paidAt, true) : 'Not paid'],
+      ['Created At', ukFormat(invoice.value.created_at, true)],
+      ['Updated At', ukFormat(invoice.value.updated_at, true)],
     ],
     theme: 'grid',
     headStyles: { fillColor: [59, 130, 246] },
@@ -131,7 +131,12 @@ onMounted(async () => {
                 Edit
               </Button>
             </RouterLink>
-            <Button class="button-primary-outline" size="sm" :disabled="pdfLoading" @click="exportPDF">
+            <Button
+              class="button-primary-outline"
+              size="sm"
+              :disabled="pdfLoading"
+              @click="exportPDF"
+            >
               <FileText class="size-4 mr-1" />
               Export PDF
             </Button>

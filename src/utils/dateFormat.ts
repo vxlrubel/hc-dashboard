@@ -1,4 +1,4 @@
-export function ukFormat(dateString: string): string {
+export function ukFormat(dateString: string, plainText = false): string {
   const date = new Date(dateString)
   if (isNaN(date.getTime())) return dateString
 
@@ -14,6 +14,8 @@ export function ukFormat(dateString: string): string {
     second: '2-digit',
     hour12: true,
   })
+
+  if (plainText) return `${datePart} | ${timePart}`
 
   return `${datePart}<br><span class="text-[12px] text-muted-foreground">${timePart}</span>`
 }
