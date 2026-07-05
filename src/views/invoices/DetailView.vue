@@ -1,14 +1,113 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import PageTitle from '@/components/PageTitle.vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { useInvoicesStore } from '@/stores/invoice'
+import { Loader, Pencil, ArrowLeft } from '@lucide/vue'
+import { Button } from '@/components/ui/button'
+import { ukFormat } from '@/utils/dateFormat'
+import { getStatus } from '@/utils/status'
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+
+const route = useRoute()
+const invoiceStore = useInvoicesStore()
+const invoiceId = route.params.id as string
+
+const invoice = ref<{
+  id: number | string
+  invoiceNumber: string
+  clientId: string
+  amount: number
+  description: string
+  status: string
+  dueDate: string
+  paidAt: string | null
+  created_at: string
+  updated_at: string
+} | null>(null)
+
+const loading = ref(true)
+
+onMounted(async () => {
+  const result = await invoiceStore.fetchInvoice(invoiceId)
+  invoice.value = result ?? null
+  loading.value = false
+})
 </script>
 
 <template>
   <div>
-    <PageTitle title="Invoice Details" subtitle="View and manage invoice information." />
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod perferendis iusto officia!
-      Repudiandae necessitatibus animi, culpa delectus accusamus quis cum voluptatem dolorem,
-      aperiam, voluptatibus mollitia!
-    </p>
+    <PageTitle title="Invoice Details" subtitle="View and manage invoice information.">
+      <RouterLink to="/dashboard/invoices">
+        <Button class="button-primary-outline">All Invoices</Button>
+      </RouterLink>
+    </PageTitle>
+
+    <div v-if="loading" class="flex justify-center mt-20">
+      <Loader class="size-8 animate-spin text-muted-foreground" />
+    </div>
+
+    <Card v-else-if="invoice" class="w-full max-w-2xl mx-auto mt-10">
+      <CardHeader>
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <CardTitle class="text-[22px] font-semibold leading-[normal] text-foreground">
+              Invoice {{ invoice.invoiceNumber }}
+            </CardTitle>
+            <CardDescription class="mt-1">Client: {{ invoice.clientId }}</CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div class="flex">
+          <div class="flex-1 min-w-0 space-y-4 text-sm text-muted-foreground">
+            <div><strong>Amount:</strong> £{{ invoice.amount }}</div>
+            <div><strong>Description:</strong> {{ invoice.description }}</div>
+            <div><strong>Due Date:</strong> {{ invoice.dueDate }}</div>
+            <div><strong>Paid At:</strong> {{ invoice.paidAt ?? 'Not paid' }}</div>
+          </div>
+          <div class="ml-6 flex-shrink-0 w-40 space-y-4">
+            <span v-html="getStatus(invoice.status)"></span>
+            <div class="border-t pt-4 mt-4">
+              <dt class="text-sm font-medium text-muted-foreground">Created at</dt>
+              <dd class="mt-1 text-sm" v-html="ukFormat(invoice.created_at)"></dd>
+            </div>
+
+            <div class="border-t pt-4">
+              <dt class="text-sm font-medium text-muted-foreground">Updated at</dt>
+              <dd class="mt-1 text-sm" v-html="ukFormat(invoice.updated_at)"></dd>
+            </div>
+
+            <div class="border-t pt-4">
+              <dt class="text-sm font-medium text-muted-foreground">Invoice ID</dt>
+              <dd class="mt-1 text-sm font-mono">{{ invoice.id }}</dd>
+            </div>
+          </div>
+        </div>
+        <dl class="space-y-4">
+          <div class="flex items-center gap-3 pt-4">
+            <RouterLink :to="`/dashboard/invoice/edit/${invoice.id}`">
+              <Button class="button-primary" size="sm">
+                <Pencil class="size-4 mr-1" />
+                Edit
+              </Button>
+            </RouterLink>
+            <RouterLink to="/dashboard/invoices">
+              <Button class="button-primary-outline" size="sm">
+                <ArrowLeft class="size-4 mr-1" />
+                Back
+              </Button>
+            </RouterLink>
+          </div>
+        </dl>
+      </CardContent>
+    </Card>
+
+    <Card v-else class="w-full max-w-md mx-auto mt-10">
+      <CardContent class="py-10 text-center text-muted-foreground">
+        Invoice not found.
+      </CardContent>
+    </Card>
   </div>
 </template>
